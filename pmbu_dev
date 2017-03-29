@@ -1,0 +1,5 @@
+[all:vars]
+_env = dev
+
+[crawler]
+localhost
