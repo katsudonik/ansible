@@ -1,0 +1,8 @@
+---
+- name: construct
+  hosts: crawler
+  become: yes
+  vars_files:
+    - vars/crawler.{{ _env }}.yml
+  roles:
+    - crawler/register

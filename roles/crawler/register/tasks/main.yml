@@ -1,0 +1,131 @@
+---
+- name: git clone/pull pyenv
+  become_user: "{{ username }}"
+  git: repo=https://github.com/yyuu/pyenv.git
+       dest=~/.pyenv
+       version=master
+       accept_hostkey=yes
+       force=yes
+  tags:
+    - crawler/register
+
+- name: setting pyenv in PATH
+  become_user: "{{ username }}"
+  lineinfile:
+    dest=~/.bash_profile
+    state=present
+    line={{ item }}
+  with_items:
+    - 'export PYENV_ROOT=~/.pyenv'
+    - 'export PATH=$PYENV_ROOT/bin:$PATH'
+    - 'eval "$(pyenv init -)"'
+  tags:
+    - crawler/register
+
+- name: install pyenv
+  become_user: "{{ username }}"
+  shell: |
+    source ~/.bash_profile
+    # install python
+    pyenv install {{anaconda_version}}
+    pyenv rehash
+    pyenv global {{anaconda_version}}
+  tags:
+    - crawler/register
+
+- name: setting anaconda in PATH
+  become_user: "{{ username }}"
+  lineinfile:
+    dest=~/.bash_profile
+    state=present
+    line={{ item }}
+  with_items:
+    - 'export PATH="$PYENV_ROOT/versions/anaconda3-4.3.0/bin/:$PATH"'
+  tags:
+    - crawler/register
+
+- name: update conda
+  become_user: "{{ username }}"
+  shell: |
+    source ~/.bash_profile
+    conda update conda -y
+  tags:
+    - crawler/register
+
+- shell: "bash -lc 'pip install {{ item }}'"
+  become_user: "{{ username }}"
+  with_items:
+    - 'cx_Oracle'
+    - 'redis'
+    - 'yml'
+  tags:
+    - crawler/register
+
+- name: create ssh dir
+  file: >
+    dest=/home/{{ username }}/.ssh
+    state=directory
+    mode=0700
+    owner={{ username }}
+    group={{ username }}
+  tags:
+    - crawler/register
+
+- name: prepare deploy key
+  become_user: "{{ username }}"
+  template: >
+    dest=~/.ssh/id_rsa
+    src=deploy_key
+    mode=0600
+  tags:
+    - crawler/register
+
+- name: git clone/pull spider_register
+  become_user: "{{ username }}"
+  git: repo=git@ghe.valuecommerce.com:affiliate/spider_register.git
+       dest=~/spider_register
+       version=master
+       accept_hostkey=yes
+       force=yes
+  tags:
+    - crawler/register
+    - crawler/register-update
+
+- name: create log/config directory
+  become_user: "{{ username }}"
+  file: >
+    path=~/spider_register/{{ item }}
+    state=directory
+    owner={{ username }}
+    group={{ username }}
+    mode=0755
+  with_items:
+    - 'log'
+    - 'config'
+  tags:
+    - crawler/register
+    - crawler/register-update
+
+#
+# application config
+#
+- name: application config
+  become: yes
+  become_user: "{{ username }}"
+  template: >
+    src={{ item. src }}
+    dest=~/spider_register/config/{{ item.dest }}
+    mode=0755
+  with_items:
+    - { src: "register.{{ _env }}.yml", dest: register.yml }
+  tags:
+    - crawler/register
+    - crawler/register-update
+
+# permission
+- name: Change src directory permission.
+  become_user: "{{ username }}"
+  file: path=~/spider_register/src owner=vcp group=vcp mode=0755 state=directory recurse=yes
+  tags:
+    - crawler/register
+    - crawler/register-update
