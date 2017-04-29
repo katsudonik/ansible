@@ -1,0 +1,14 @@
+# 既に記載ないか確認
+- shell: grep "{{ item }}" /etc/php.d/oci8.ini
+  register: result
+  ignore_errors: true
+  failed_when: false
+  changed_when: false
+
+# 記載なければ追記
+- name: add "{{ item }}"
+  shell: echo "{{ item }}" >> /etc/php.d/oci8.ini
+  when: result.stdout_lines == []
+  notify:
+    - restart httpd
+

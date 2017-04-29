@@ -1,0 +1,14 @@
+# 既に記載ないか確認
+- name: grep {{ item.check_var }} /etc/profile
+  shell: grep {{ item.check_var }} /etc/profile
+  register: result
+  ignore_errors: true
+  failed_when: false
+  changed_when: false
+
+# 記載なければ追記して反映
+- name: set /etc/profile "{{ item.add_var }}" and source /etc/profile
+  shell: |
+    echo '{{ item.add_var }}' >> /etc/profile
+    source /etc/profile
+  when: result.stdout_lines == []
