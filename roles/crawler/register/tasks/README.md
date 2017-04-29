@@ -1,0 +1,2 @@
+tensorflow：数値計算library
+keras:tensorflowの簡略版
