@@ -58,6 +58,9 @@
     - 'cx_Oracle'
     - 'redis'
     - 'yml'
+    - 'tensorflow'
+    - 'keras'
+    - 'selenium'
   tags:
     - crawler/register
 
