@@ -1,0 +1,42 @@
+# PHP関連でyumでいれるパッケージ
+php_yum_install_packages:
+  - 'php'
+  - 'php-mbstring'
+  - 'php-pear'
+  - 'php-pecl-apc'
+  - 'php-xml'
+  - 'php-pdo'
+  - 'php-posix'
+  - 'php-intl'
+  - 'php-mysql'
+  - 'php-gd'
+  - 'mod_ssl'
+  - 'zlib-devel'
+  - 'php-devel'
+  - 'memcached'
+  - 'php-pecl-memcache'
+  - 'php-ldap'
+
+# php.iniの置換
+php_ini_regexp_replace:
+  - { regexp: '^;date\.timezone ='   ,replace: 'date.timezone = Asia/Tokyo' }
+  - { regexp: '^memory_limit = 128M' ,replace: 'memory_limit = 2048M' }
+
+# apc.iniの置換
+apc_ini_regexp_replace:
+  - { regexp: '^apc.shm_size=64M', replace: 'apc.shm_size=1024M' }
+
+# pearでupdate channel
+pear_update_channels:
+  - 'pear.php.net'
+  - 'pecl.php.net'
+
+# pearでいれるパッケージ
+pear_install_packages:
+  - 'Cache_Lite'
+  - 'Math_BigInteger'
+  - 'HTTP_Request2'
+  - 'pecl/memcache'
+
+
+

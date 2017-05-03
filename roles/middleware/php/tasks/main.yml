@@ -1,0 +1,37 @@
+# php関連のパッケージインストール
+- name: yum install php packages
+  yum: name={{item}} state=present
+  with_items: "{{ php_yum_install_packages }}"
+
+# pear channel-update
+- name: pear channel-update
+  shell: pear channel-update "{{ item }}"
+  with_items: "{{ pear_update_channels }}"
+
+# pearのパッケージインストール
+- name: pear insatall packages
+  pear: name={{ item }} state=present
+  with_items: "{{ pear_install_packages }}"
+
+# php.iniの置換
+- name: php.ini replace
+  replace: >
+    dest=/etc/php.ini
+    regexp={{ item.regexp }}
+    replace={{ item.replace }}
+  with_items: "{{ php_ini_regexp_replace }}"
+  notify:
+    - restart httpd
+
+# apc.iniの置換
+- name: apc.ini replace
+  lineinfile: >-
+    dest='/etc/php.d/apc.ini'
+    state=present
+    backrefs=yes
+    regexp={{ item.regexp }}
+    line={{ item.replace }}
+  with_items: "{{ apc_ini_regexp_replace }}"
+  notify:
+    - restart httpd
+
