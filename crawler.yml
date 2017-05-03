@@ -5,6 +5,7 @@
   vars_files:
     - vars/crawler.{{ _env }}.yml
   roles:
-    - {role: common/develop, tags: ['develop']}
-    - {role: common/oracle, tags: ['oracle']}
-    - {role: crawler/register, tags: ['register']}
+    - {role: middleware/develop, tags: ['develop']}
+    - {role: middleware/oracle, tags: ['oracle']}
+    - {role: middleware/python, tags: ['python']}
+    - {role: application/stock_crawler, tags: ['register']}

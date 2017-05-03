@@ -1,0 +1,30 @@
+# sqlplus64入ってるか確認
+- shell: which sqlplus64
+  register: result
+  ignore_errors: true
+  failed_when: false
+  changed_when: false
+
+# oracle-clientインストール
+- include: rpm_install.yml
+  with_items: "{{ oracleclientrpm }}"
+  when: result.stdout_lines == []
+
+# LIBRARY_PATH追加
+- include: add_profile.yml
+  with_items: "{{ oraclelibpath }}"
+
+- name: Trans expect.sh for set $ORACLE_HOME
+  template: src=expect.sh dest=/tmp/expect_oci8.sh mode=0777
+
+- name: Execute expect for set $ORACLE_HOME
+  shell: /tmp/expect_oci8.sh
+
+- include: add_oci8_ini.yml
+  with_items:
+    - 'extension=oci8.so'
+  ignore_errors: true
+  failed_when: false
+  changed_when: false
+
+

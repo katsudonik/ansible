@@ -1,0 +1,10 @@
+# oracle-client関連でインストールするRPMファイル名
+oracleclientrpm:
+  - "oracle-instantclient11.2-basic-11.2.0.2.0.x86_64.rpm"
+  - "oracle-instantclient11.2-devel-11.2.0.2.0.x86_64.rpm"
+  - "oracle-instantclient11.2-sqlplus-11.2.0.2.0.x86_64.rpm"
+
+# 追加するパス
+oraclelibpath:
+  - { check_var: "LD_LIBRARY_PATH" , add_var : 'export LD_LIBRARY_PATH=/usr/lib/oracle/11.2/client64/lib:/usr/lib64:$LD_LIBRARY_PATH' }
+

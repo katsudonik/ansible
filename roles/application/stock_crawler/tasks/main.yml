@@ -1,0 +1,50 @@
+---
+- name: git clone/pull spider_register
+  become_user: "{{ username }}"
+  git: repo=git@ghe.valuecommerce.com:affiliate/spider_register.git
+       dest=~/spider_register
+       version=master
+       accept_hostkey=yes
+       force=yes
+  tags:
+    - crawler/register
+    - crawler/register-update
+
+- name: create log/config directory
+  become_user: "{{ username }}"
+  file: >
+    path=~/spider_register/{{ item }}
+    state=directory
+    owner={{ username }}
+    group={{ username }}
+    mode=0755
+  with_items:
+    - 'log'
+    - 'config'
+  tags:
+    - crawler/register
+    - crawler/register-update
+
+#
+# application config
+#
+- name: application config
+  become: yes
+  become_user: "{{ username }}"
+  template: >
+    src={{ item. src }}
+    dest=~/spider_register/config/{{ item.dest }}
+    mode=0755
+  with_items:
+    - { src: "register.{{ _env }}.yml", dest: register.yml }
+  tags:
+    - crawler/register
+    - crawler/register-update
+
+# permission
+- name: Change src directory permission.
+  become_user: "{{ username }}"
+  file: path=~/spider_register/src owner=vcp group=vcp mode=0755 state=directory recurse=yes
+  tags:
+    - crawler/register
+    - crawler/register-update
