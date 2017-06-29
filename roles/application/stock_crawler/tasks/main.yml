@@ -1,16 +1,15 @@
 ---
 - name: git clone/pull spider_register
   become_user: "{{ username }}"
-  git: repo=git@ghe.valuecommerce.com:affiliate/spider_register.git
+  git: repo=git@github.com:katsudonik/stock_crawler.git
        dest=~/spider_register
        version=master
        accept_hostkey=yes
        force=yes
   tags:
-    - crawler/register
-    - crawler/register-update
+    - stock_crawler
 
-- name: create log/config directory
+- name: create log/config/image directory
   become_user: "{{ username }}"
   file: >
     path=~/spider_register/{{ item }}
