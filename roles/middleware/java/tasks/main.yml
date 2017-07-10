@@ -1,0 +1,62 @@
+---
+- name: install packages
+  yum: name={{ item.name }} state={{ item.state }}
+  with_items:
+    - { name: java-1.6.0-openjdk, state: present }
+    - { name: java-1.6.0-openjdk-devel, state: present }
+    - { name: java-1.7.0-openjdk, state: present }
+    - { name: java-1.7.0-openjdk-devel, state: present }
+    - { name: java-1.8.0-openjdk, state: present }
+    - { name: java-1.8.0-openjdk-devel, state: present }
+  tags:
+    - java
+
+- name: check ant directory
+  stat: path=/usr/share/ant
+  register: fm
+  tags:
+    - java 
+
+- name: install ant
+  get_url:
+    url: http://www.apache.org/dist/ant/binaries/apache-ant-1.10.1-bin.tar.gz
+    dest: /tmp/apache-ant-1.10.1-bin.tar.gz
+  when: not fm.stat.exists
+  tags:
+    - java 
+
+- name: unarchive ant
+  command: tar zxvf apache-ant-1.10.1-bin.tar.gz chdir=/tmp
+  when: not fm.stat.exists
+  tags:
+    - java 
+
+- name: cp apache-ant-1.10.1 /usr/share/ant
+  become: true 
+  become_method: sudo
+  command: cp /tmp/apache-ant-1.10.1 /usr/share/ant
+  when: not fm.stat.exists
+  tags:
+    - java 
+
+- name: ln -s /usr/share/ant/bin/ant /usr/bin/ant
+  become: true 
+  become_method: sudo
+  command: ln -s /usr/share/ant/bin/ant /usr/bin/ant
+  when: not fm.stat.exists
+  tags:
+    - java 
+
+- name: install ant lib 
+  copy:
+    src=files/ant/lib/
+    dest=/home/{{ ansible_ssh_user }}/.ant/lib/
+  when: not fm.stat.exists
+  tags:
+    - java 
+
+- name: install ant profile
+  copy: src=files/ant.sh dest=/etc/profile.d mode=0755
+  when: not fm.stat.exists
+  tags:
+    - java

@@ -1,0 +1,50 @@
+---
+- name: install packages
+  yum: name={{ item.name }} state={{ item.state }}
+  with_items:
+    - { name: gcc,        state: present }
+    - { name: make,       state: present }
+    - { name: zlib-devel, state: present }
+    - { name: perl,       state: present }
+    - { name: rpm-build,  state: present }
+    - { name: automake,   state: present }
+  tags:
+    - c 
+
+- name: check openssl
+  stat: path=/opt/openssl
+  register: fm
+
+- name: install openssl 
+  get_url:
+    url: https://www.openssl.org/source/openssl-1.0.2k.tar.gz 
+    dest: /tmp/openssl-1.0.2k.tar.gz
+  when: not fm.stat.exists 
+  tags:
+    - c
+
+- name: unarchive openssl 
+  command: tar zxvf openssl-1.0.2k.tar.gz chdir=/tmp
+  when: not fm.stat.exists 
+  tags:
+    - c 
+
+- name: config openssl 
+  command: /tmp/openssl-1.0.2k/config --prefix=/opt/openssl shared zlib chdir=/tmp/openssl-1.0.2k
+  when: not fm.stat.exists 
+  tags:
+    - c
+
+- name: make openssl 
+  command: make chdir=/tmp/openssl-1.0.2k
+  when: not fm.stat.exists 
+  tags:
+    - c
+
+- name: make install openssl 
+  become: true 
+  become_method: sudo
+  command: make install chdir=/tmp/openssl-1.0.2k
+  when: not fm.stat.exists 
+  tags:
+    - c

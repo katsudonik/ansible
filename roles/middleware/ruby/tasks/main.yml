@@ -1,0 +1,76 @@
+---
+- name: install packages
+  yum: name={{ item.name }} state={{ item.state }}
+  with_items:
+    - { name: tar,            state: present }
+    - { name: make,           state: present }
+    - { name: libffi-devel,   state: present }
+    - { name: zlib-devel,     state: present }
+    - { name: openssl-devel,  state: present }
+    - { name: readline-devel, state: present }
+    - { name: bzip2,          state: present }
+    - { name: ruby,           state: latest }
+  tags:
+    - ruby
+
+- name: check installed rbenv
+  stat: path={{ rbenv_root }}   
+  register: fm
+
+- name: install rbenv
+  git: repo=https://github.com/sstephenson/rbenv.git dest={{ rbenv_root }}
+  when: not fm.stat.exists
+  tags:
+    - ruby
+
+- name: install ruby-build
+  git: repo=https://github.com/sstephenson/ruby-build.git dest={{ rbenv_root }}/plugins/ruby-build
+  when: not fm.stat.exists
+  tags:
+    - ruby
+
+- name: create rbenv group
+  group: name=rbenv state=present
+  when: not fm.stat.exists
+  tags:
+    - ruby
+
+- name: add rbenv user to rbenv group
+  user: name={{ rbenv_user }} append=yes groups=rbenv
+  when: not fm.stat.exists
+  register: add_group
+  tags:
+    - ruby
+
+- name: create dirs
+  file: path={{ rbenv_root }}/{{ item.name }} state=directory
+  when: not fm.stat.exists
+  with_items:
+    - { name: shims }
+    - { name: versions }
+  tags:
+    - ruby
+
+- name: change owner of install dir
+  file: path={{ rbenv_root }} group=rbenv mode=2775 state=directory recurse=yes
+  when: not fm.stat.exists
+  tags:
+    - ruby
+
+- name: set rbenv env file
+  when: not fm.stat.exists
+  copy: src=rbenv.sh dest=/etc/profile.d mode=0775
+  tags:
+    - ruby
+
+- name: install ruby with rbenv
+  when: not fm.stat.exists
+  shell: bash -lc "CONFIGURE_OPTS="--disable-install-rdoc" rbenv install {{ ruby_version }}"
+  tags:
+    - ruby
+
+- name: "set ruby {{ ruby_version }} for system"
+  when: not fm.stat.exists
+  shell: bash -lc "rbenv global {{ ruby_version }} && rbenv rehash"
+  tags:
+    - ruby

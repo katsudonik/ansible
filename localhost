@@ -1,0 +1,8 @@
+[all:vars]
+_env = dev
+ansible_ssh_user=vagrant
+svn_user=kaikeda
+svn_password=password
+
+[crawler]
+localhost

@@ -1,0 +1,58 @@
+---
+- name: check installed casperjs
+  stat: path=/usr/local/casperjs
+  register: fm_casper
+  tags:
+    - js
+
+- name: download casperjs
+  become: true
+  become_method: sudo
+  git: repo=https://github.com/casperjs/casperjs.git dest=/usr/local/casperjs
+  when: not fm_casper.stat.exists
+  tags:
+    - js
+
+- name: install casperjs
+  become: true
+  become_method: sudo
+  command: ln -sf /usr/local/casperjs/bin/casperjs /usr/local/bin/casperjs
+  when: not fm_casper.stat.exists
+  tags:
+    - js
+
+- name: check installed phantomjs
+  stat: path=/usr/local/phantomjs
+  register: fm_phantom
+  tags:
+    - js
+
+- name: download phantomjs
+  get_url:
+    url: https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
+    dest: /tmp
+  when: not fm_phantom.stat.exists
+  tags:
+    - js
+
+- name: unarchive phantomjs
+  command: tar jxfv /tmp/phantomjs-2.1.1-linux-x86_64.tar.bz2
+  when: not fm_phantom.stat.exists
+  tags:
+    - js
+
+- name: mv phantomjs
+  become: true
+  become_method: sudo
+  command: mv phantomjs-2.1.1-linux-x86_64 /usr/local/phantomjs
+  when: not fm_phantom.stat.exists
+  tags:
+    - js
+
+- name: install phantomjs
+  become: true
+  become_method: sudo
+  command: ln -sf /usr/local/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
+  when: not fm_phantom.stat.exists
+  tags:
+- js

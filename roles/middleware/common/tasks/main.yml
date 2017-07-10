@@ -1,0 +1,35 @@
+---
+- name: install packages
+  yum: name={{ item.name }} state={{ item.state }}
+  with_items:
+    - { name: subversion,   state: present }
+    - { name: rpm-build,    state: present }
+    - { name: git,          state: present }
+    - { name: tig,          state: present }
+    - { name: wget,         state: present }
+    - { name: net-tools,    state: present }
+  tags:
+    - common
+
+- name: check subversion properties
+  stat: path=/home/{{ ansible_ssh_user }}/.subversion/vc-svn-user.properties
+  register: fm
+  tags:
+    - common
+
+- name: install subversion properties
+  copy:
+    src=files/subversion/
+    dest=/home/{{ ansible_ssh_user }}/.subversion/
+  when: not fm.stat.exists
+  tags:
+    - common
+
+- name: set subversion passowrd
+  replace: >
+    dest=/home/{{ ansible_ssh_user}}/.subversion/vc-svn-user.properties
+    regexp='^svn.user.password='
+    replace="svn.user.password={{ svn_password }}"
+  when: not fm.stat.exists
+  tags:
+    - common
