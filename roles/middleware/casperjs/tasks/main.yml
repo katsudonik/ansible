@@ -3,7 +3,7 @@
   stat: path=/usr/local/casperjs
   register: fm_casper
   tags:
-    - js
+    - casperjs
 
 - name: download casperjs
   become: true
@@ -11,7 +11,7 @@
   git: repo=https://github.com/casperjs/casperjs.git dest=/usr/local/casperjs
   when: not fm_casper.stat.exists
   tags:
-    - js
+    - casperjs
 
 - name: install casperjs
   become: true
@@ -19,13 +19,13 @@
   command: ln -sf /usr/local/casperjs/bin/casperjs /usr/local/bin/casperjs
   when: not fm_casper.stat.exists
   tags:
-    - js
+    - casperjs
 
 - name: check installed phantomjs
   stat: path=/usr/local/phantomjs
   register: fm_phantom
   tags:
-    - js
+    - casperjs
 
 - name: download phantomjs
   get_url:
@@ -33,13 +33,13 @@
     dest: /tmp
   when: not fm_phantom.stat.exists
   tags:
-    - js
+    - casperjs
 
 - name: unarchive phantomjs
   command: tar jxfv /tmp/phantomjs-2.1.1-linux-x86_64.tar.bz2
   when: not fm_phantom.stat.exists
   tags:
-    - js
+    - casperjs
 
 - name: mv phantomjs
   become: true
@@ -47,7 +47,7 @@
   command: mv phantomjs-2.1.1-linux-x86_64 /usr/local/phantomjs
   when: not fm_phantom.stat.exists
   tags:
-    - js
+    - casperjs
 
 - name: install phantomjs
   become: true
@@ -55,4 +55,4 @@
   command: ln -sf /usr/local/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
   when: not fm_phantom.stat.exists
   tags:
-- js
+    - casperjs
