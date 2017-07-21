@@ -10,3 +10,4 @@
     - {role: middleware/python, tags: ['python']}
     - {role: middleware/php,tags: ['php']}
     - {role: middleware/casperjs,tags: ['casperjs']}
+    - {role: middleware/elastic,tags: ['elastic']}
