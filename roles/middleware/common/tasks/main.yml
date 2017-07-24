@@ -11,6 +11,11 @@
   tags:
     - common
 
+- name: install expect
+  yum: >
+    name=expect
+    state=latest
+
 - name: check subversion properties
   stat: path=/home/{{ ansible_ssh_user }}/.subversion/vc-svn-user.properties
   register: fm

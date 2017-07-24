@@ -1,5 +1,0 @@
----
-
-- yum: >
-    name=expect
-    state=latest
