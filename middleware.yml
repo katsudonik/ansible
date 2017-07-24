@@ -7,11 +7,11 @@
   roles:
     - {role: middleware/common,tags: ['common']}
     - {role: middleware/develop, tags: ['develop']}
-    - {role: middleware/oracle, tags: ['oracle']}
     - {role: middleware/python, tags: ['python']}
     - {role: middleware/php,tags: ['php']}
-    - {role: middleware/php,tags: ['ruby']}
+    - {role: middleware/ruby,tags: ['ruby']}
     - {role: middleware/java,tags: ['java']}
-    - {role: middleware/java,tags: ['c']}
+    - {role: middleware/c,tags: ['c']}
     - {role: middleware/casperjs,tags: ['casperjs']}
+    - {role: middleware/oracle, tags: ['oracle']}
     - {role: middleware/elastic,tags: ['elastic']}
