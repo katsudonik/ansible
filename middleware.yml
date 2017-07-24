@@ -6,7 +6,6 @@
     - vars/crawler.{{ _env }}.yml
   roles:
     - {role: middleware/common,tags: ['common']}
-    - {role: middleware/develop, tags: ['develop']}
     - {role: middleware/python, tags: ['python']}
     - {role: middleware/php,tags: ['php']}
     - {role: middleware/ruby,tags: ['ruby']}
