@@ -1,4 +1,6 @@
 ---
+# centos7
+
 - name: install packages
   yum: name={{ item.name }} state={{ item.state }}
   with_items:
