@@ -34,7 +34,7 @@
 - name: cp apache-ant-1.10.1 /usr/share/ant
   become: true 
   become_method: sudo
-  command: cp /tmp/apache-ant-1.10.1 /usr/share/ant
+  command: cp -r /tmp/apache-ant-1.10.1 /usr/share/ant
   when: not fm.stat.exists
   tags:
     - java 
