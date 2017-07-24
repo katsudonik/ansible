@@ -12,5 +12,6 @@
     - {role: middleware/php,tags: ['php']}
     - {role: middleware/php,tags: ['ruby']}
     - {role: middleware/java,tags: ['java']}
+    - {role: middleware/java,tags: ['c']}
     - {role: middleware/casperjs,tags: ['casperjs']}
     - {role: middleware/elastic,tags: ['elastic']}
