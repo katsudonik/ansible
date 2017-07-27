@@ -1,0 +1,10 @@
+---
+- name: git clone/pull {{ project_name }}
+  become_user: "{{ username }}"
+  git: repo=git@{{ git.domain }}:{{ git.user }}/{{ git.repository_name }}.git
+       dest={{ git.dir }}
+       version={{ git.version }}
+       accept_hostkey=yes
+       force=yes
+  tags:
+    - git_clone_pull

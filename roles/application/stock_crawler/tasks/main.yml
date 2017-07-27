@@ -1,5 +1,5 @@
 ---
-- name: git clone/pull spider_register
+- name: git clone/pull {{ project_name }}
   become_user: "{{ username }}"
   git: repo=git@github.com:katsudonik/stock_crawler.git
        dest=~/spider_register

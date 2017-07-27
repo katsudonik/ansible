@@ -1,3 +1,11 @@
 ---
 username: vcp
 anaconda_version: anaconda3-4.3.0
+project_name: stock_crawler
+
+git:
+  domain: github.com
+  user: katsudonik
+  repository_name: {{ project_name }}
+  dir: ~/{{ project_name }}
+  version: {{ git_version }
