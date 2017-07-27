@@ -6,6 +6,8 @@ project_name: stock_crawler
 git:
   domain: github.com
   user: katsudonik
-  repository_name: {{ project_name }}
-  dir: ~/{{ project_name }}
+  repository_name: {{ git_repo }}
+  key: {{ git_key }
+  key_path: {{ git_key_path }
+  dir: {{ git_dir }}
   version: {{ git_version }

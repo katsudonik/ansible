@@ -1,7 +1,17 @@
 ---
+- name: prepare deploy key for {{ project_name }}
+  become_user: "{{ username }}"
+  template: >
+    src={{ git.key}}
+    dest={{ git.key_path }}
+    mode=0600
+  tags:
+    - git_clone_pull
+
 - name: git clone/pull {{ project_name }}
   become_user: "{{ username }}"
   git: repo=git@{{ git.domain }}:{{ git.user }}/{{ git.repository_name }}.git
+       key_file={{ git.key_path }}
        dest={{ git.dir }}
        version={{ git.version }}
        accept_hostkey=yes

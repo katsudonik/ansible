@@ -1,13 +1,12 @@
 ---
-- name: git clone/pull {{ project_name }}
-  become_user: "{{ username }}"
-  git: repo=git@github.com:katsudonik/stock_crawler.git
-       dest=~/spider_register
-       version=master
-       accept_hostkey=yes
-       force=yes
-  tags:
-    - stock_crawler
+- name: vault_decrypt loop
+  include_role:
+    name: common/git_clone_pull
+  with_items:
+    - {url: "https://{{ git_remote_domain }}/raw/{{ git_user }}/{{ repository_name }}/{{ before }}/app/config/parameters.yml.prod?token={{ before_token }}", path: "/tmp/parameters.yml.prod.{{ project_name }}_{{ before }}"}
+  loop_control:
+    loop_var: git
+
 
 - name: create log/config directory
   become_user: "{{ username }}"
