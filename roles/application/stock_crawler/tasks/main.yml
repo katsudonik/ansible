@@ -9,7 +9,7 @@
   tags:
     - stock_crawler
 
-- name: create log/config/image directory
+- name: create log/config directory
   become_user: "{{ username }}"
   file: >
     path=~/spider_register/{{ item }}
@@ -21,8 +21,7 @@
     - 'log'
     - 'config'
   tags:
-    - crawler/register
-    - crawler/register-update
+    - stock_crawler
 
 #
 # application config
@@ -36,6 +35,7 @@
     mode=0755
   with_items:
     - { src: "register.{{ _env }}.yml", dest: register.yml }
+    - { src: "logging.{{ _env }}.ini", dest: logging.ini }
   tags:
     - crawler/register
     - crawler/register-update
@@ -45,5 +45,37 @@
   become_user: "{{ username }}"
   file: path=~/spider_register/src owner=vcp group=vcp mode=0755 state=directory recurse=yes
   tags:
-    - crawler/register
-    - crawler/register-update
+    - stock_crawler
+
+- name: cythonize
+  become_user: "{{ username }}"
+  shell: mv spider_register.py spider_register.pyx
+  args:
+    chdir: ~/spider_register/src
+  tags:
+    - stock_crawler
+
+- name: compile
+  become_user: "{{ username }}"
+  shell: |
+    source ~/.bash_profile
+    /home/vcp/.pyenv/versions/anaconda3-4.3.0/bin/python setup.py {{ item }}
+  args:
+    chdir: ~/spider_register/src
+  with_items:
+    - 'build_ext'
+    - 'install_lib'
+  tags:
+    - stock_crawler
+
+- name: setting logrotate to /etc/logrotate.d/spider_register
+  template: >
+    src={{ item. src }}
+    dest={{ item.dest }}
+    owner=root
+    group=root
+    mode=0644
+  with_items:
+    - { src: "logrotate", dest: /etc/logrotate.d/spider_register }
+  tags:
+    - stock_crawler

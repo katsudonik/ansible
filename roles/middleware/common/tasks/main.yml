@@ -15,6 +15,18 @@
   yum: >
     name=expect
     state=latest
+  tags:
+    - common
+
+- name: create ssh dir
+  file: >
+    dest=/home/{{ username }}/.ssh
+    state=directory
+    mode=0700
+    owner={{ username }}
+    group={{ username }}
+  tags:
+    - common
 
 - name: check subversion properties
   stat: path=/home/{{ ansible_ssh_user }}/.subversion/vc-svn-user.properties

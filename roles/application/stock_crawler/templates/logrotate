@@ -1,0 +1,12 @@
+/home/vcp/spider_register/log/spider_register.log
+{
+   daily
+   missingok
+   notifempty
+   compress
+   delaycompress
+   rotate 10
+   dateext
+   dateformat _%Y%m%d
+   copytruncate
+}

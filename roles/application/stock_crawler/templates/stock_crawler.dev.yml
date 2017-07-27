@@ -1,0 +1,10 @@
+oracle:
+  host: "127.0.0.1"
+  service_name: ""
+  user: "vcapps"
+  password: "vcapps"
+redis:
+  host: "localhost"
+  port: 6379
+  db: 2
+  failed_stock_db: 3
