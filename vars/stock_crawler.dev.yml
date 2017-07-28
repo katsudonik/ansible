@@ -6,8 +6,10 @@ project_name: stock_crawler
 git:
   repository_name: stock_crawler
   key: stock_crawler
-  key_path: {{ git_key_path }
-  dir: {{ git_dir }}
+  key_path: ~/.ssh/{{ git.key }}
+  dir: ~/{{ project_name }}
   version: {{ git_version }
-  owner: {{ owner }
-  group: {{ group }
+  owner: {{ username }
+  group: {{ username }
+
+vault_password_path: ~/.vault_password
