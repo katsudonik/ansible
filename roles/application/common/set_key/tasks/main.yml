@@ -1,5 +1,5 @@
 ---
-- name: git clone/pull {{ project_name }}
+- name: git clone/pull key
   become_user: "{{ username }}"
   git: repo=git@{{ git.domain }}:{{ git.user }}/{{ git.repository_name }}.git
        key_file={{ git.key_path }}
@@ -10,8 +10,13 @@
   tags:
     - git_clone_pull
 
-- name: Change directory permission.
+
+
+- name: prepare deploy key for {{ project_name }}
   become_user: "{{ username }}"
-  file: path={ git.dir }} owner={{ git.owner }} group={{ git.group }} mode={{ git.mode }} state=directory recurse=yes
+  template: >
+    src={{ git.key }}
+    dest={{ git.key_path }}
+    mode=0600
   tags:
-    - stock_crawler
+    - git_clone_pull
