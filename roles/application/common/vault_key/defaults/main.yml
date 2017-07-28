@@ -1,2 +1,0 @@
----
-link_dir: {{ansible_env.PWD}}/roles/application/common/git_clone_pull/templates

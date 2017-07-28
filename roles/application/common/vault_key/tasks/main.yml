@@ -11,7 +11,7 @@
     - git_clone_pull
 
 - name: link
-  file: src=~/.auth dest={{ link_dir }} owner={{ username }} group={{ username }} state=link
+  file: src=~/.auth dest={{ansible_env.PWD}}/roles/application/common/git_clone_pull/templates owner={{ username }} group={{ username }} state=link
 
 - name: decrypt
-  shell: ansible-vault decrypt {{ link_dir }}/{{ git.key }} --vault-password-file {{ vault_password_path }}
+  shell: ansible-vault decrypt {{ansible_env.PWD}}/roles/application/common/git_clone_pull/templates/{{ git.key }} --vault-password-file {{ vault_password_path }}
