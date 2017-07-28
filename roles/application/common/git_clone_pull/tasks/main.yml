@@ -1,4 +1,13 @@
 ---
+- name: prepare deploy key for {{ project_name }}
+  become_user: "{{ username }}"
+  template: >
+    src={{ git.key }}
+    dest=~/.ssh/{{ git.key }}
+    mode=0600
+  tags:
+    - git_clone_pull
+
 - name: git clone/pull {{ project_name }}
   become_user: "{{ username }}"
   git: repo=git@{{ git.domain }}:{{ git.user }}/{{ git.repository_name }}.git

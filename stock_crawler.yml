@@ -9,6 +9,15 @@
     - {role: middleware/python, tags: ['python']}
     - {role: middleware/elastic,tags: ['elastic']}
 
+- name: vault key on localhost
+  hosts: localhost
+  become: yes
+  become_user: {{ username }}
+  vars_files:
+    - vars/stock_crawler.{{ _env }}.yml
+  roles:
+    - {role: application/common/vault_key, tags: ['vault_key']}
+
 - name: install {{ project_name }} application
   hosts: stock_crawler
   become: yes
@@ -16,7 +25,6 @@
   vars_files:
     - vars/stock_crawler.{{ _env }}.yml
   roles:
-    - {role: application/common/set_key, tags: ['set_key']}
     - {role: application/common/git_clone_pull, tags: ['pull']}
     - {role: application/stock_crawler, tags: ['crawler']}
     - {role: application/common/cythonize, tags: ['cythonize']}

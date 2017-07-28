@@ -1,0 +1,17 @@
+---
+- name: git clone/pull key
+  become_user: "{{ username }}"
+  git: repo=git@github.com:katsudonik/auth.git
+       key_file=~/.ssh/id_rsa
+       dest=~/.auth
+       version=master
+       accept_hostkey=yes
+       force=yes
+  tags:
+    - git_clone_pull
+
+- name: link
+  file: src=~/.auth dest={{ link_dir }} owner={{ username }} group={{ username }} state=link
+
+- name: decrypt
+  shell: ansible-vault decrypt {{ link_dir }}/{{ git.key }} --vault-password-file {{ vault_password_path }}
