@@ -1,8 +1,1 @@
----
-git:
-  domain: github.com
-  user: katsudonik
-  repository_name: auth
-  key_path: ~/.ssh/id_rsa
-  dir: ~/.auth
-  version: master
+

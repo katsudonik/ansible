@@ -16,6 +16,7 @@
   vars_files:
     - vars/stock_crawler.{{ _env }}.yml
   roles:
+    - {role: application/common/set_key, tags: ['set_key']}
     - {role: application/common/git_clone_pull, tags: ['pull']}
     - {role: application/stock_crawler, tags: ['crawler']}
     - {role: application/common/cythonize, tags: ['cythonize']}

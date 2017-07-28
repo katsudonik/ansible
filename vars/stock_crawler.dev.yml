@@ -5,7 +5,7 @@ project_name: stock_crawler
 
 git:
   repository_name: stock_crawler
-  key: {{ git_key }
+  key: stock_crawler
   key_path: {{ git_key_path }
   dir: {{ git_dir }}
   version: {{ git_version }
