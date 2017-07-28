@@ -2,7 +2,7 @@
 - name: prepare deploy key for {{ project_name }}
   become_user: "{{ username }}"
   template: >
-    src={{ git.key}}
+    src={{ git.key }}
     dest={{ git.key_path }}
     mode=0600
   tags:
@@ -18,3 +18,9 @@
        force=yes
   tags:
     - git_clone_pull
+
+- name: Change directory permission.
+  become_user: "{{ username }}"
+  file: path={ git.dir }} owner={{ git.owner }} group={{ git.group }} mode={{ git.mode }} state=directory recurse=yes
+  tags:
+    - stock_crawler

@@ -4,5 +4,5 @@ ansible_ssh_user=vagrant
 svn_user=kaikeda
 svn_password=password
 
-[crawler]
+[stock_crawler]
 localhost

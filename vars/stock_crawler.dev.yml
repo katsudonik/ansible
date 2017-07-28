@@ -4,10 +4,10 @@ anaconda_version: anaconda3-4.3.0
 project_name: stock_crawler
 
 git:
-  domain: github.com
-  user: katsudonik
-  repository_name: {{ git_repo }}
+  repository_name: stock_crawler
   key: {{ git_key }
   key_path: {{ git_key_path }
   dir: {{ git_dir }}
   version: {{ git_version }
+  owner: {{ owner }
+  group: {{ group }
