@@ -8,11 +8,11 @@ git:
   user: katsudonik
   repository_name: stock_crawler
   key: stock_crawler
-  key_path: ~/.ssh/stock_crawler
-  dir: ~/{{ project_name }}
+  key_path: /home/vcp/.ssh/stock_crawler
+  dir: /home/vcp/{{ project_name }}
   version: "{{ git_version }}"
   owner: "{{ username }}"
   group: "{{ username }}"
   mode: 0755
 
-vault_password_path: ~/.vault_password
+vault_password_path: /home/vcp/.vault_password
