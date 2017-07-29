@@ -2,6 +2,7 @@
 username: vcp
 anaconda_version: anaconda3-4.3.0
 project_name: stock_crawler
+git_version: master
 
 git:
   domain: github.com
@@ -11,8 +12,8 @@ git:
   key_path: /home/vcp/.ssh/stock_crawler
   dir: /home/vcp/{{ project_name }}
   version: "{{ git_version }}"
-  owner: "{{ username }}"
-  group: "{{ username }}"
+  owner: vcp
+  group: vcp
   mode: 0755
 
 vault_password_path: /home/vcp/.vault_password
