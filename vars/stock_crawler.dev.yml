@@ -4,6 +4,8 @@ anaconda_version: anaconda3-4.3.0
 project_name: stock_crawler
 
 git:
+  domain: github.com
+  user: katsudonik
   repository_name: stock_crawler
   key: stock_crawler
   key_path: ~/.ssh/{{ git.key }}
