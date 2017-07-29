@@ -12,7 +12,7 @@
 - name: vault key on localhost
   hosts: localhost
   become: yes
-  become_user: {{ username }}
+  become_user: "{{ username }}"
   vars_files:
     - vars/stock_crawler.{{ _env }}.yml
   roles:
@@ -21,7 +21,7 @@
 - name: install {{ project_name }} application
   hosts: stock_crawler
   become: yes
-  become_user: {{ username }}
+  become_user: "{{ username }}"
   vars_files:
     - vars/stock_crawler.{{ _env }}.yml
   roles:
