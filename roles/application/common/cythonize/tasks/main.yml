@@ -3,7 +3,7 @@
   become_user: "{{ username }}"
   shell: mv {{ file_name }}.py {{ file_name }}.pyx
   args:
-    chdir: {{ src_dir }}
+    chdir: "{{ src_dir }}"
   tags:
     - stock_crawler
 
@@ -13,7 +13,7 @@
     source ~/.bash_profile
     /home/vcp/.pyenv/versions/anaconda3-4.3.0/bin/python setup.py {{ item }}
   args:
-    chdir: {{ src_dir }}
+    chdir: "{{ src_dir }}"
   with_items:
     - 'build_ext'
     - 'install_lib'

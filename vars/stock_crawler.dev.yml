@@ -21,3 +21,5 @@ vault_password_path: /home/vcp/.vault_password
 config_dir:
   - 'config'
   - 'log'
+
+src_dir:  /home/vcp/{{ project_name }}/src
