@@ -34,19 +34,19 @@
   tags:
     - common
 
-- name: install subversion properties
-  copy:
-    src=files/subversion/
-    dest=/home/{{ ansible_ssh_user }}/.subversion/
-  when: not fm.stat.exists
-  tags:
-    - common
-
-- name: set subversion passowrd
-  replace: >
-    dest=/home/{{ ansible_ssh_user}}/.subversion/vc-svn-user.properties
-    regexp='^svn.user.password='
-    replace="svn.user.password={{ svn_password }}"
-  when: not fm.stat.exists
-  tags:
-    - common
+#- name: install subversion properties
+#  copy:
+#    src=files/subversion/
+#    dest=/home/{{ ansible_ssh_user }}/.subversion/
+#  when: not fm.stat.exists
+#  tags:
+#    - common
+#
+#- name: set subversion passowrd
+#  replace: >
+#    dest=/home/{{ ansible_ssh_user}}/.subversion/vc-svn-user.properties
+#    regexp='^svn.user.password='
+#    replace="svn.user.password={{ svn_password }}"
+#  when: not fm.stat.exists
+#  tags:
+#    - common
