@@ -7,3 +7,6 @@ username=vcp
 
 [stock_crawler]
 localhost
+
+[localhost]
+localhost
