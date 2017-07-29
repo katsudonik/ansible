@@ -11,5 +11,6 @@ git:
   version: {{ git_version }
   owner: {{ username }
   group: {{ username }
+  mode: 0755
 
 vault_password_path: ~/.vault_password
