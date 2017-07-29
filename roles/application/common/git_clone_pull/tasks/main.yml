@@ -19,7 +19,7 @@
   tags:
     - git_clone_pull
 
-- name: Change directory permission.
+- name: Change directory permission.{{ git.mode }}
   become_user: "{{ username }}"
   file:  >
     path={{ git.dir }}
