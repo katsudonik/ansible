@@ -8,7 +8,7 @@ git:
   user: katsudonik
   repository_name: stock_crawler
   key: stock_crawler
-  key_path: ~/.ssh/{{ git.key }}
+  key_path: ~/.ssh/stock_crawler
   dir: ~/{{ project_name }}
   version: {{ git_version }
   owner: {{ username }
