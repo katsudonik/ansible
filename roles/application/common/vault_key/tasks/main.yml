@@ -12,8 +12,8 @@
 
 - name: link
   become_user: "{{ username }}"
-  file: src=~/.auth dest={{ role_path }}/application/common/git_clone_pull/templates owner={{ username }} group={{ username }} state=link
+  file: src=~/.auth dest={{ role_path }}/../git_clone_pull/templates owner={{ username }} group={{ username }} state=link
 
 - name: decrypt
   become_user: "{{ username }}"
-  shell: ansible-vault decrypt {{ role_path }}/application/common/git_clone_pull/templates/{{ git.key }} --vault-password-file {{ vault_password_path }}
+  shell: ansible-vault decrypt {{ role_path }}/../git_clone_pull/templates/{{ git.key }} --vault-password-file {{ vault_password_path }}
