@@ -33,6 +33,6 @@
     group=root
     mode=0644
   with_items:
-    - { src: "logrotate", dest: /etc/logrotate.d/{{ project_name }} }
+    - { src: "logrotate", dest: /etc/logrotate.d/{{ project_name }}
   tags:
     - stock_crawler
