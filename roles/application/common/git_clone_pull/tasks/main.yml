@@ -21,6 +21,11 @@
 
 - name: Change directory permission.
   become_user: "{{ username }}"
-  file: path={ git.dir }} owner={{ git.owner }} group={{ git.group }} mode={{ git.mode }} state=directory recurse=yes
+  file:
+    path={ git.dir }}
+    owner={{ git.owner }}
+    group={{ git.group }}
+    mode={{ git.mode }}
+    state=directory recurse=yes
   tags:
     - stock_crawler
