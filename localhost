@@ -1,6 +1,6 @@
 [all:vars]
 _env = dev
-ansible_ssh_user=vagrant
+ansible_ssh_user=root
 svn_user=kaikeda
 svn_password=password
 username=vcp
