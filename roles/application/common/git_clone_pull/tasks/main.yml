@@ -26,6 +26,7 @@
     owner={{ git.owner }}
     group={{ git.group }}
     mode={{ git.mode }}
-    state=directory recurse=yes
+    state=directory
+    recurse=yes
   tags:
     - stock_crawler
