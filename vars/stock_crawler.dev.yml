@@ -14,7 +14,6 @@ git:
   version: "{{ git_version }}"
   owner: vcp
   group: vcp
-  mode: 0755
 
 vault_password_path: /home/vcp/.vault_password
 
