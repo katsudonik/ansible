@@ -17,3 +17,7 @@ git:
   mode: 0755
 
 vault_password_path: /home/vcp/.vault_password
+
+config_dir:
+  - 'config'
+  - 'log'
