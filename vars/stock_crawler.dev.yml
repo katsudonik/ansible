@@ -10,9 +10,9 @@ git:
   key: stock_crawler
   key_path: ~/.ssh/stock_crawler
   dir: ~/{{ project_name }}
-  version: {{ git_version }
-  owner: {{ username }}
-  group: {{ username }}
+  version: "{{ git_version }}"
+  owner: "{{ username }}"
+  group: "{{ username }}"
   mode: 0755
 
 vault_password_path: ~/.vault_password
