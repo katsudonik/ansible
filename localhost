@@ -1,9 +1,7 @@
-[all:vars]
-_env=dev
-username=vcp
-
 [stock_crawler]
 localhost
+_env=dev
+username=vcp
 
 [localhost]
 localhost
