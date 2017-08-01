@@ -28,3 +28,11 @@
     - {role: application/common/git_clone_pull, tags: ['pull']}
     - {role: application/stock_crawler, tags: ['crawler']}
     - {role: application/common/cythonize, tags: ['cythonize']}
+
+- name: install {{ project_name }} logrotate
+  hosts: stock_crawler
+  become: yes
+  vars_files:
+    - vars/stock_crawler.{{ _env }}.yml
+  roles:
+    - {role: application/common/logrotate,tags: ['logrotate']}
