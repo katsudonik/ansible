@@ -26,6 +26,8 @@
     - crawler/register
 
 - name: setting logrotate to /etc/logrotate.d/{{ project_name }}
+  become: yes
+  become_user: "{{ username }}"
   template: >
     src={{ item. src }}
     dest={{ item.dest }}
