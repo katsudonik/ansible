@@ -1,0 +1,11 @@
+---
+- name: install packages
+  yum: name=docker state=present
+
+- name: sudo systemctl start docker
+  shell: sudo systemctl start docker
+- name: sudo systemctl enable docker
+  shell: sudo systemctl enable docker
+
+- name: sudo docker pull centos:6
+  shell: sudo docker pull centos:6
