@@ -1,0 +1,41 @@
+---
+- name: install yum packages
+  yum: name={{ item.name }} state={{ item.state }}
+  with_items:
+    - { name: docker, state: present }
+  tags:
+    - api/els
+
+- shell: systemctl start docker
+
+- shell: systemctl enable docker
+
+#- shell: docker pull docker.elastic.co/elasticsearch/elasticsearch:5.5.2
+
+- shell: sudo -i;  curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+- shell: chmod +x /usr/local/bin/docker-compose
+
+# anytime?
+- shell: sudo sysctl -w vm.max_map_count=262144
+
+- shell: mkdir ~/offer_search
+
+- name: docker-compose setting files
+  template: src={{ item. src }} dest=~/ backup=yes
+  with_items:
+    - { src: "docker-compose.yml", dest: "~/" }
+    - { src: "elasticsearch.yml", dest: "~/" }
+    - { src: "kibana.yml", dest: "~/" }
+    - { src: "Dockerfile", dest: "~/offer_search/" }
+    - { src: "myapp.sh", dest: "~/offer_search/" }
+
+# -d:background : to access kibana
+- shell: docker-compose up -d
+  chdir: ~/
+
+- shell: docker-compose ps
+
+- shell: curl -u elastic http://127.0.0.1:9200/_cat/health?v
+
+#root login:docker exec -u root -it elasticsearch1 bash
