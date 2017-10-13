@@ -17,7 +17,9 @@
 - shell: chmod +x /usr/local/bin/docker-compose
 
 # anytime?
-- shell: sudo sysctl -w vm.max_map_count=262144
+- shell: echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+
+- shell: sysctl -p
 
 - shell: mkdir ~/offer_search
 
@@ -39,3 +41,5 @@
 - shell: curl -u elastic http://127.0.0.1:9200/_cat/health?v
 
 #root login:docker exec -u root -it elasticsearch1 bash
+
+#cd /usr/share/elasticsearch/; bin/elasticsearch-plugin install analysis-kuromoji

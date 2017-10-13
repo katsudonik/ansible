@@ -69,6 +69,8 @@ services:
       - esnet
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch1:9200
+    depends_on:
+      - "elasticsearch1"
 
   logstash:
     image: docker.elastic.co/logstash/logstash:5.5.2
@@ -83,6 +85,8 @@ services:
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch1:9200
       - ELASTICSEARCH_DOMAIN=elasticsearch1
+    depends_on:
+      - "elasticsearch1"
 #    command: /usr/share/logstash/bin/logstash-plugin install x-pack
 
   offer_search:
