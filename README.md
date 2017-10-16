@@ -21,3 +21,7 @@ service logstash start
 
 ### stop firewalld (centos7)
 systemctl stop firewalld
+
+## elastic_docker
+docker-compose up
+if added port 9300, refreshing image(docker-compose down --rmi all) is required once. 
