@@ -8,7 +8,7 @@
   with_items:
     - { name:  net-tools,  state: present }
     - { name:  java-1.8.0-openjdk-devel,  state: present }
-    - { name:  'https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.0.rpm',  state: present }
+    - { name:  'https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.0.rpm',  state: present }
     - { name:  kibana,  state: present }
     - { name:  logstash,  state: present }
 
@@ -35,3 +35,7 @@
     - { src:  t_ad_crawl_result.conf,  dest: t_ad_crawl_result.conf }
     - { src:  t_ad_crawl_result_ad.conf,  dest: t_ad_crawl_result_ad.conf }
     - { src:  t_ad_crawl_result_detail.conf,  dest: t_ad_crawl_result_detail.conf }
+    - { src:  params.conf,  dest: params.conf }
+
+# install xpack
+# https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html
