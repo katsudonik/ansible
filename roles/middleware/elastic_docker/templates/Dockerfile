@@ -2,7 +2,7 @@ FROM centos:centos6
 
 RUN useradd vcp
 RUN yum install -y wget tar git unzip
-RUN yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel tomcat
+RUN yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
 RUN wget https://services.gradle.org/distributions/gradle-3.4.1-bin.zip
 RUN mkdir /opt/gradle
 RUN unzip -d /opt/gradle gradle-3.4.1-bin.zip
