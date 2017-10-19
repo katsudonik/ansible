@@ -1,8 +1,7 @@
 FROM centos:centos6
 
-RUN yum install -y wget tar git 
-RUN yum -y install java-1.8.0-openjdk
-RUN yum -y install java-1.8.0-openjdk-devel
+RUN yum install -y wget tar git unzip
+RUN yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel tomcat
 RUN wget https://services.gradle.org/distributions/gradle-3.4.1-bin.zip
 RUN mkdir /opt/gradle
 RUN unzip -d /opt/gradle gradle-3.4.1-bin.zip
@@ -10,7 +9,6 @@ RUN rm -f gradle-3.4.1-bin.zip
 RUN export PATH=$PATH:/opt/gradle/gradle-3.4.1/bin
 RUN mkdir -p /usr/local/vc/
 RUN rpm -Uvh http://ftp.riken.jp/Linux/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm
-RUN yum -y install tomcat
 RUN yum -y install libaio
 
 RUN useradd vcp
