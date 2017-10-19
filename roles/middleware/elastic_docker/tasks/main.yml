@@ -21,7 +21,7 @@
 
 - shell: sysctl -p
 
-- shell: mkdir ~/offer_search
+- file: path=~/offer_search state=directory owner=root group=root mode=0755
 
 - name: docker-compose setting files
   template: src={{ item. src }} dest=~/ backup=yes
