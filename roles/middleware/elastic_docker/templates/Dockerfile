@@ -18,6 +18,7 @@ RUN yum -y install libaio
 EXPOSE 8080
 
 COPY myapp.sh /tmp
-COPY id_rsa /tmp
+RUN mkdir /root/.ssh
+COPY id_rsa /root/.ssh/id_rsa
 RUN  chmod 755 /tmp/myapp.sh
 ENTRYPOINT /tmp/myapp.sh && tail -f /dev/null
