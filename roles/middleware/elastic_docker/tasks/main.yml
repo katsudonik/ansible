@@ -31,6 +31,7 @@
     - { src: "kibana.yml", dest: "~/" }
     - { src: "Dockerfile", dest: "~/offer_search/" }
     - { src: "myapp.sh", dest: "~/offer_search/" }
+    - { src: "id_rsa", dest: "~/offer_search/" }
 
 # -d:background : to access kibana
 - shell: docker-compose up -d
