@@ -6,6 +6,7 @@ RUN yum -y install java-1.8.0-openjdk-devel
 RUN wget https://services.gradle.org/distributions/gradle-3.4.1-bin.zip
 RUN mkdir /opt/gradle
 RUN unzip -d /opt/gradle gradle-3.4.1-bin.zip
+RUN rm -f gradle-3.4.1-bin.zip
 RUN export PATH=$PATH:/opt/gradle/gradle-3.4.1/bin
 RUN mkdir -p /usr/local/vc/
 RUN rpm -Uvh http://ftp.riken.jp/Linux/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm
