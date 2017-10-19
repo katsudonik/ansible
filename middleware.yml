@@ -14,3 +14,4 @@
     - {role: middleware/casperjs,tags: ['casperjs']}
     - {role: middleware/oracle, tags: ['oracle']}
     - {role: middleware/elastic,tags: ['elastic']}
+    - {role: middleware/elastic_docker,tags: ['elastic_docker']}
