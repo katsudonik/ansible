@@ -12,13 +12,13 @@ RUN mkdir -p /usr/local/vc/
 RUN rpm -Uvh http://ftp.riken.jp/Linux/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm
 RUN yum -y install libaio
 
-#RUN git clone git@github.com:katsudonik/elasticsearch_java_sample.git /usr/local/vc/elasticsearch_java_sample
-#RUN cd /usr/local/vc/elasticsearch_java_sample; gradle build
+RUN mkdir /root/.ssh
+COPY id_rsa /root/.ssh/id_rsa
+RUN git clone git@github.com:katsudonik/elasticsearch_java_sample.git /usr/local/vc/elasticsearch_java_sample
+RUN cd /usr/local/vc/elasticsearch_java_sample; gradle build
 
 EXPOSE 8080
 
 COPY myapp.sh /tmp
-RUN mkdir /root/.ssh
-COPY id_rsa /root/.ssh/id_rsa
 RUN  chmod 755 /tmp/myapp.sh
 ENTRYPOINT /tmp/myapp.sh && tail -f /dev/null
