@@ -14,6 +14,7 @@ RUN yum -y install libaio
 
 RUN mkdir /root/.ssh
 COPY id_rsa /root/.ssh/id_rsa
+RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
 RUN git clone git@github.com:katsudonik/elasticsearch_java_sample.git /usr/local/vc/elasticsearch_java_sample
 RUN cd /usr/local/vc/elasticsearch_java_sample; gradle build
 
