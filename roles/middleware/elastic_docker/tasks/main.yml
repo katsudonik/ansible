@@ -35,7 +35,8 @@
 
 # -d:background : to access kibana
 - shell: docker-compose up
-  chdir: ~/
+  args:
+  chdir: "~/"
 
 - shell: docker-compose ps
 
