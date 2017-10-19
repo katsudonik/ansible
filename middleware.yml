@@ -1,9 +1,9 @@
 ---
 - name: construct
-  hosts: crawler
+  hosts: stock_crawler
   become: yes
   vars_files:
-    - vars/crawler.{{ _env }}.yml
+    - vars/stock_crawler.dev.yml
   roles:
     - {role: middleware/common,tags: ['common']}
     - {role: middleware/python, tags: ['python']}
