@@ -34,13 +34,13 @@
     - { src: "id_rsa", dest: "~/offer_search/" }
 
 # -d:background : to access kibana
-- shell: docker-compose up -d
-  args:
-    chdir: "~/"
-
-- shell: docker-compose ps
-
-- shell: curl -u elastic http://127.0.0.1:9200/_cat/health?v
+#- shell: docker-compose up -d
+#  args:
+#    chdir: "~/"
+#
+#- shell: docker-compose ps
+#
+#- shell: curl -u elastic http://127.0.0.1:9200/_cat/health?v
 
 #root login:docker exec -u root -it elasticsearch1 bash
 
