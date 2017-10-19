@@ -24,7 +24,7 @@
 - file: path=~/offer_search state=directory owner=root group=root mode=0755
 
 - name: docker-compose setting files
-  template: src={{ item. src }} dest=~/ backup=yes
+  template: src={{ item. src }} dest={{ item. dest }} backup=yes
   with_items:
     - { src: "docker-compose.yml", dest: "~/" }
     - { src: "elasticsearch.yml", dest: "~/" }
