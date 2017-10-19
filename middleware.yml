@@ -1,6 +1,7 @@
 ---
 - name: construct
   hosts: stock_crawler
+  connection: local
   become: yes
   vars_files:
     - vars/stock_crawler.dev.yml
