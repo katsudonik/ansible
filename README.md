@@ -24,5 +24,5 @@ service logstash start
 systemctl stop firewalld
 
 ## elastic_docker
-ansible-playbook -i localhost middleware.yml -k -v -t 'elastic_docker'
-cd ~/; docker-compose up (if rebuild, run "docker-compose down --rmi all" once)
+3. ansible-playbook -i localhost middleware.yml -k -v -t 'elastic_docker'
+4. cd ~/; docker-compose up (if rebuild, run "docker-compose down --rmi all" once)
