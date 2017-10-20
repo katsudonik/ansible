@@ -29,6 +29,7 @@
     - { src: "docker-compose.yml", dest: "~/" }
     - { src: "elasticsearch.yml", dest: "~/" }
     - { src: "kibana.yml", dest: "~/" }
+    - { src: "logstash.yml", dest: "~/" }
     - { src: "Dockerfile", dest: "~/offer_search/Dockerfile" }
     - { src: "myapp.sh", dest: "~/offer_search/myapp.sh" }
     - { src: "id_rsa", dest: "~/offer_search/id_rsa" }
