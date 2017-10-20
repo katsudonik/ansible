@@ -2,7 +2,7 @@
 
 1. sudo yum -y install epel-release
 2. sudo yum -y install ansible
-3. git clone git@github.com:katsudonik/ansible.git; cd ansible
+3. ssh-keyscan github.com >> ~/.ssh/known_hosts; git clone git@github.com:katsudonik/ansible.git; cd ansible
 
 3. run below
 * ansible-playbook -i localhost middleware.yml -k -v
