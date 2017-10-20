@@ -30,7 +30,7 @@
     - { src: "elasticsearch.yml", dest: "~/docker/" }
     - { src: "kibana.yml", dest: "~/docker/" }
     - { src: "logstash.yml", dest: "~/docker/" }
-    - { src: "ojdbc8.jar", dest: "~/docker/" }
+#    - { src: "ojdbc8.jar", dest: "~/docker/" }
     - { src: "Dockerfile", dest: "~/docker/offer_search/Dockerfile" }
     - { src: "myapp.sh", dest: "~/docker/offer_search/myapp.sh" }
     - { src: "id_rsa", dest: "~/docker/offer_search/id_rsa" }
