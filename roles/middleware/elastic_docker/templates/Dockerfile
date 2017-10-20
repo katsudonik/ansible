@@ -7,8 +7,7 @@ RUN wget https://services.gradle.org/distributions/gradle-3.4.1-bin.zip
 RUN mkdir /opt/gradle
 RUN unzip -d /opt/gradle gradle-3.4.1-bin.zip
 RUN rm -f gradle-3.4.1-bin.zip
-RUN echo "export PATH=$PATH:/opt/gradle/gradle-3.4.1/bin" >> ~/.bash_profile
-RUN source ~/.bash_profile
+ENV PATH $PATH:/opt/gradle/gradle-3.4.1/bin
 RUN mkdir -p /usr/local/vc/
 RUN rpm -Uvh http://ftp.riken.jp/Linux/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm
 RUN yum -y install libaio
