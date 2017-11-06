@@ -1,4 +1,10 @@
 ---
+- name: useradd
+  user: name={{ ansible_ssh_user }} state=present
+
+- name: add a sudo user
+  lineinfile: "dest=/etc/sudoers backup=yes state=present regexp='^{{ ansible_ssh_user }}' line='{{ ansible_ssh_user }} ALL=(ALL) NOPASSWD: ALL'"
+
 - name: install packages
   yum: name={{ item.name }} state={{ item.state }}
   with_items:
