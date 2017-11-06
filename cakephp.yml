@@ -9,6 +9,7 @@
     - {role: middleware/common,tags: ['common']}
     - {role: middleware/httpd, tags: ['httpd']}
     - {role: middleware/mysql,tags: ['mysql']}
+    - {role: middleware/php,tags: ['php']}
 
 - name: install {{ project_name }} application
   hosts: stock_crawler
