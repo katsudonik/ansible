@@ -1,0 +1,35 @@
+---
+- name: install {{ project_name }} middleware
+  hosts: stock_crawler
+  become: yes
+  vars_files:
+    - vars/stock_crawler.{{ _env }}.yml
+  roles:
+    - {role: middleware/common,tags: ['common']}
+    - {role: middleware/httpd, tags: ['httpd']}
+    - {role: middleware/mysql,tags: ['mysql']}
+
+- name: install {{ project_name }} application
+  hosts: stock_crawler
+  become: yes
+  become_user: "{{ username }}"
+  vars_files:
+    - vars/cakephp.{{ _env }}.yml
+  roles:
+    - {role: application/common/git_clone_pull, tags: ['pull']}
+
+- name: install {{ project_name }} application
+  hosts: stock_crawler
+  become: yes
+  become_user: "{{ username }}"
+  vars_files:
+    - vars/cakephp.{{ _env }}.yml
+  tasks:
+    - name: git clone/pull cakephp
+      become_user: "{{ username }}"
+      git: repo=git://github.com/cakephp/cakephp.git
+           dest={{ git.dir }}
+           version={{ git.version }}
+           accept_hostkey=yes
+           force=yes
+
