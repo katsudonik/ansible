@@ -1,6 +1,7 @@
 ---
 - name: install {{ project_name }} middleware
   hosts: stock_crawler
+  connection: local
   become: yes
   vars_files:
     - vars/stock_crawler.{{ _env }}.yml
@@ -33,3 +34,6 @@
            accept_hostkey=yes
            force=yes
 
+    - name:
+      become_user: "{{ username }}"
+      git: repo=git://github.com/cakephp/cakephp.git
