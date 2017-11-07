@@ -5,10 +5,11 @@
 
 - file: path=/var/log/mysqld.log state=absent
 
+- shell: yum localinstall http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+
 - name: yum install mysqld packages
   yum: name={{ item.name }} state={{ item.state }}
   with_items:
-    - { name:  'http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm',  state: present }
     - { name:  mysql-community-server,  state: present }
 
 - name: setting my.cnf
