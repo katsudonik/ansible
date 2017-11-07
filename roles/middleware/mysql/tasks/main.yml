@@ -20,6 +20,11 @@
 - name: start mysqld
   service: name=mysqld state=started
 
+- name: check .my.cnf exists
+  stat:
+    path: /root/.my.cnf
+  register: mycnf_file
+
 - name: get temporary password
   shell: cat /var/log/mysqld.log | grep "temporary password" | awk '{print $11}'
   register: mysql_default_password
@@ -35,3 +40,7 @@
   shell: |
     mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
   when: not mycnf_file.stat.exists
+
+- shell: touch /root/.my.cnf
+
+
