@@ -20,7 +20,6 @@
     - vars/cakephp.{{ _env }}.yml
   tasks:
     - name: git clone/pull cakephp
-      become_user: "{{ username }}"
       git: repo=git://github.com/cakephp/cakephp.git
            dest={{ git.dir }}
            version={{ git.version }}
