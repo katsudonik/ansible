@@ -3,6 +3,8 @@
 
 - file: path=/var/lib/mysql state=absent
 
+- file: path=/var/log/mysqld.log state=absent
+
 - name: yum install mysqld packages
   yum: name={{ item.name }} state={{ item.state }}
   with_items:
