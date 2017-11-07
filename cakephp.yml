@@ -13,15 +13,7 @@
 
 - name: install {{ project_name }} application
   hosts: stock_crawler
-  become: yes
-  become_user: "{{ username }}"
-  vars_files:
-    - vars/cakephp.{{ _env }}.yml
-  roles:
-    - {role: application/common/git_clone_pull, tags: ['pull']}
-
-- name: install {{ project_name }} application
-  hosts: stock_crawler
+  connection: local
   become: yes
   become_user: "{{ username }}"
   vars_files:
@@ -35,6 +27,5 @@
            accept_hostkey=yes
            force=yes
 
-    - name:
-      become_user: "{{ username }}"
-      git: repo=git://github.com/cakephp/cakephp.git
+    - name: permission
+      file: path=/var/www/html/cakephp state=directory owner=apache group=apache mode=0777
