@@ -17,11 +17,6 @@
   with_items:
     - { name:  mysql-community-server,  state: present }
 
-- name: setting my.cnf
-  template: src={{ item.src }} dest={{ item.dest }}
-  with_items:
-    - { src:  my.cnf,  dest: /etc/my.cnf }
-
 - name: start mysqld
   service: name=mysqld state=started
 
@@ -47,6 +42,11 @@
   when: not mycnf_file.stat.exists
 
 - shell: touch /root/.my.cnf
+
+- name: setting my.cnf
+  template: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src:  my.cnf,  dest: /etc/my.cnf }
 
 - name: restart mysqld
   service: name=mysqld state=restarted
