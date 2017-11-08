@@ -33,7 +33,7 @@
 
 - name: change root user password
   shell: |
-    mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
+    mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set PASSWORD='admin';;"
   when: not mycnf_file.stat.exists
 
 - shell: touch /root/.my.cnf
