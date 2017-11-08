@@ -32,7 +32,7 @@
 
 - name: change root user password
   shell: |
-    echo "password = {{ mysql_default_password.stdout }} >> /etc/my.cnf"
+    echo "password = {{ mysql_default_password.stdout }}" >> /etc/my.cnf
   when: not mycnf_file.stat.exists
 
 - name: change password validation to the easy way
