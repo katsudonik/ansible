@@ -1,6 +1,11 @@
 - name: yum remove
   yum: name=mariadb-libs state=removed
 
+- name: yum remove mysqld packages
+  yum: name={{ item.name }} state={{ item.state }}
+  with_items:
+    - { name:  mysql-community-server,  state: removed }
+
 - file: path=/var/lib/mysql state=absent
 
 - file: path=/var/log/mysqld.log state=absent
