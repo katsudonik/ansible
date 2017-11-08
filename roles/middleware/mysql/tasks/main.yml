@@ -43,4 +43,7 @@
 
 - shell: touch /root/.my.cnf
 
+- name: restart mysqld
+  service: name=mysqld state=restarted
+
 
