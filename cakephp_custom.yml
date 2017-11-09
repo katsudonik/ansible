@@ -26,7 +26,9 @@
         chdir: /etc/yum.repos.d
       
     - shell: yum -y --enablerepo=remi,remi-php56 install httpd php php-common php-mysql
-      
+
+    - shell: setenforce 0 
+
 #    - name: git clone/pull cakephp
 #      git: repo=git://github.com/cakephp/cakephp.git
 #           dest={{ git.dir }}
