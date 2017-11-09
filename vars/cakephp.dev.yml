@@ -2,15 +2,11 @@
 project_name: cakephp
 
 git:
-  dir: /var/www/html/{{ project_name }}
+  dir: /vagrant_data/{{ project_name }}
   version: 2.x
   owner: vcp
   group: vcp
 
-vault_password_path: /home/vcp/.vault_password
-
 config_dir:
   - 'config'
   - 'log'
-
-src_dir:  /home/vcp/{{ project_name }}/src
