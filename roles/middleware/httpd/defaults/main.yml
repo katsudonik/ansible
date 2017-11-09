@@ -1,0 +1,4 @@
+httpd_regexp_replace:
+  - { regexp: '^AllowOverride none ='   ,replace: 'AllowOverride All' }
+  - { regexp: '^Require all denied' ,replace: 'Require all granted' }
+  - { regexp: '^DirectoryIndex index.html' ,replace: 'DirectoryIndex index.html index.php' }
