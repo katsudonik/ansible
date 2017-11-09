@@ -3,3 +3,10 @@
 
 - name: start httpd
   service: name=httpd state=started
+  
+- name: httpd.conf replace
+  replace: >
+    dest=/etc/httpd/conf/httpd.conf
+    regexp={{ item.regexp }}
+    replace={{ item.replace }}
+  with_items: "{{ httpd_regexp_replace }}"
