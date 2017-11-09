@@ -1,4 +1,4 @@
 httpd_regexp_replace:
-  - { regexp: '^ +AllowOverride'   ,replace: '    AllowOverride All' }
+  - { regexp: '^ +AllowOverride*'   ,replace: '    AllowOverride All' }
   - { regexp: '^ +Require all denied' ,replace: '    Require all granted' }
   - { regexp: '^ +DirectoryIndex index.html' ,replace: '    DirectoryIndex index.html index.php' }
