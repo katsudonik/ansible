@@ -1,9 +1,9 @@
 - name: yum remove
   yum: name=mariadb-libs state=removed
 
-- file: path=/var/lib/mysql state=absent
+# - file: path=/var/lib/mysql state=absent
 
-- file: path=/var/log/mysqld.log state=absent
+# - file: path=/var/log/mysqld.log state=absent
 
 - shell: yum -y localinstall http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
 
