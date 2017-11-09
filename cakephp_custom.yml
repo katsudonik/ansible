@@ -21,7 +21,7 @@
     - name: php
       shell: yum -y install epel-release
       
-    - shell: url -O http://rpms.famillecollet.com/enterprise/remi.repo
+    - shell: curl -O http://rpms.famillecollet.com/enterprise/remi.repo
       args:
         chdir: /etc/yum.repos.d
       
