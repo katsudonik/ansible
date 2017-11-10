@@ -32,6 +32,8 @@
 
     - shell: setenforce 0 
 
+    - shell: chmod 777 /vagrant_data/
+
 #    - name: git clone/pull cakephp
 #      git: repo=git://github.com/cakephp/cakephp.git
 #           dest={{ git.dir }}
