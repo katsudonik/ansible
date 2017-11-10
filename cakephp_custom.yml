@@ -18,7 +18,10 @@
   vars_files:
     - vars/cakephp.{{ _env }}.yml
   tasks:
-    - name: php
+    - name: remove default php
+      shell: yum -y remove php*
+
+    - name: install php 5.6
       shell: yum -y install epel-release
       
     - shell: curl -O http://rpms.famillecollet.com/enterprise/remi.repo
