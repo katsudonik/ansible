@@ -10,3 +10,8 @@
     regexp={{ item.regexp }}
     replace={{ item.replace }}
   with_items: "{{ httpd_regexp_replace }}"
+
+- name: setting virtualhost.conf
+  template: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src:  virtualhost.conf,  dest: /etc/httpd/conf.d/virtualhost.conf }
