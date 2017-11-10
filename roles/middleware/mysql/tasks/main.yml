@@ -50,4 +50,5 @@
 - name: restart mysqld
   service: name=mysqld state=restarted
 
+- shell: systemctl enable mysqld.service
 
