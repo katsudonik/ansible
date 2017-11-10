@@ -15,3 +15,6 @@
   template: src={{ item.src }} dest={{ item.dest }}
   with_items:
     - { src:  virtualhost.conf,  dest: /etc/httpd/conf.d/virtualhost.conf }
+
+- name: chkconfig httpd on
+  shell: chkconfig httpd on
