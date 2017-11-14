@@ -8,7 +8,7 @@
 * ansible-playbook -i localhost middleware.yml -k -v
 * ansible-playbook -i localhost application.yml -k -v
 
-### start elasticsearch
+### start elasticsearch: minimal:2060255232 Byte(2G)
 /etc/init.d/elasticsearch start
 
 ### start kibana
