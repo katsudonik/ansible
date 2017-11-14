@@ -35,7 +35,7 @@
     - { src:  t_ad_crawl_result.conf,  dest: t_ad_crawl_result.conf }
     - { src:  t_ad_crawl_result_ad.conf,  dest: t_ad_crawl_result_ad.conf }
     - { src:  t_ad_crawl_result_detail.conf,  dest: t_ad_crawl_result_detail.conf }
-    - { src:  params.conf,  dest: params.conf }
+    - { src:  params1.conf,  dest: params.conf }
 
 # install xpack
 # https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html
