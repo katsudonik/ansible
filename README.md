@@ -18,7 +18,7 @@
 src=ojdbc8.jar dest=/usr/share/logstash/bin/ojdbc8.jar
 
 ### start logstash
-service logstash start
+/usr/share/logstash/bin/logstash 
 
 ### stop firewalld (centos7)
 systemctl stop firewalld
