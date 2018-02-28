@@ -26,3 +26,33 @@ systemctl stop firewalld
 ## elastic_docker
 3. ansible-playbook -i localhost middleware.yml -k -v -t 'elastic_docker'
 4. cd ~/docker; docker-compose up (if rebuild, run "docker-compose down --rmi all" once)
+
+
+
+
+# jupyter
+
+vagrantfile:
+```
+Vagrant.configure("2") do |config|
+  # *snip*
+  config.vm.network "forwarded_port", guest: 8888, host: 8888
+  # *snip*
+end
+```
+
+```
+pip install jupyter
+jupyter notebook --generate-config
+```
+
+edit
+```
+c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False
+```
+
+run
+```
+jupyter notebook --ip=* --no-browser
+```
