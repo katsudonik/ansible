@@ -12,4 +12,5 @@ pyenv rehash
 pyenv global anaconda3-4.1.0
 python --version
 pip install keras
+pip install tensorflow
 ```
