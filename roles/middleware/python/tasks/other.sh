@@ -11,4 +11,5 @@ pyenv install anaconda3-5.1.0
 pyenv rehash
 pyenv global anaconda3-4.1.0
 python --version
+pip install keras
 ```
