@@ -43,3 +43,5 @@ print(device_lib.list_local_devices())
 from keras import backend as K
 K.tensorflow_backend._get_available_gpus()
 ```
+
+aws p2/p3/g3 instance using NVIDIA GPU
