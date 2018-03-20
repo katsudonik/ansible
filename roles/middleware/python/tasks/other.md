@@ -33,3 +33,9 @@ CUDA requires NVIDIA GPU
 
 if GPU is usable, keras uses GPU by default.
 https://keras.io/ja/getting-started/faq/#kerasgpu
+
+check usable of GPU  
+```
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+```
