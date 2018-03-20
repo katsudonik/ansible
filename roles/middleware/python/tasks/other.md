@@ -46,3 +46,8 @@ K.tensorflow_backend._get_available_gpus()
 
 aws p2/p3/g3 instance using NVIDIA GPU  
 https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/accelerated-computing-instances.html
+
+
+AWS Deep Learning AMI  
+120960円/month  (g3.4xlarge)
+https://aws.amazon.com/marketplace/pp/B076T8RSXY?qid=1510181222760&sr=0-2&ref_=srh_res_product_title
