@@ -8,6 +8,7 @@ source ~/.bashrc
 pyenv versions
 pyenv install -l | grep anaconda
 pyenv install anaconda3-5.1.0
+export PATH=/home/erc-admin/.pyenv/versions/anaconda3-5.1.0/bin:$PATH
 pyenv rehash
 pyenv global anaconda3-4.1.0
 python --version
