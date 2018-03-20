@@ -19,6 +19,6 @@ pip install keras
 keras uses tensorflow on backend by default.
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN): deeplearning library  
--> require NVIDIA graphic card support CUDA 
+-> require NVIDIA graphic card support CUDA (GPU Compute Capability >= 3.0)
 
 Illegal instruction: Lack of cpu capacity
