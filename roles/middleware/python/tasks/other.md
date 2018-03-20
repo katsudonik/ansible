@@ -12,6 +12,8 @@ export PATH=/home/erc-admin/.pyenv/versions/anaconda3-5.1.0/bin:$PATH
 pyenv rehash
 pyenv global anaconda3-5.1.0
 python --version
-pip install keras
 pip install tensorflow
+pip install keras
 ```
+
+keras uses tensorflow on backend by default.
