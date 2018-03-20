@@ -44,4 +44,5 @@ from keras import backend as K
 K.tensorflow_backend._get_available_gpus()
 ```
 
-aws p2/p3/g3 instance using NVIDIA GPU
+aws p2/p3/g3 instance using NVIDIA GPU  
+https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/accelerated-computing-instances.html
