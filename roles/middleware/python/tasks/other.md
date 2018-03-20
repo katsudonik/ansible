@@ -20,3 +20,5 @@ keras uses tensorflow on backend by default.
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN): deeplearning library  
 -> require NVIDIA graphic card support CUDA 
+
+Illegal instruction: Lack of cpu capacity
