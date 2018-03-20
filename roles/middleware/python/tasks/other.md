@@ -20,7 +20,8 @@ keras uses tensorflow on backend by default.
 
 cuDNN  
 use cuDNN = enable runnung tensorflow-gpu
-http://tecsingularity.com/cuda/cudnn/
+http://tecsingularity.com/cuda/cudnn/  
+http://blog.amedama.jp/entry/2017/02/26/120215
 
 The NVIDIA CUDA® Deep Neural Network library (cuDNN): deeplearning library  
 -> require NVIDIA graphic card support CUDA (GPU Compute Capability >= 3.0)
