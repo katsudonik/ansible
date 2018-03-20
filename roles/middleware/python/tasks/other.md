@@ -17,3 +17,5 @@ pip install keras
 ```
 
 keras uses tensorflow on backend by default.
+
+cuDNN: deeplearning library
