@@ -28,7 +28,7 @@ The NVIDIA CUDA® Deep Neural Network library (cuDNN): deeplearning library
 -> require NVIDIA graphic card support CUDA (GPU Compute Capability >= 3.0)
 
 gpu acceralated learning requires tensorflow-gpu.  
-tensorflow-gpu requires CUDA?  
+tensorflow-gpu requires CUDA  
 CUDA requires NVIDIA GPU
 
 if GPU is usable, keras uses GPU by default.
