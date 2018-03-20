@@ -31,4 +31,5 @@ gpu acceralated learning requires tensorflow-gpu.
 tensorflow-gpu requires CUDA?  
 CUDA requires NVIDIA GPU
 
-
+if GPU is usable, keras uses GPU by default.
+https://keras.io/ja/getting-started/faq/#kerasgpu
