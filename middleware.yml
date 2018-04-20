@@ -7,6 +7,7 @@
     - vars/stock_crawler.dev.yml
   roles:
     - {role: middleware/common,tags: ['common']}
+    - {role: middleware/mysql,tags: ['mysql']}
     - {role: middleware/python, tags: ['python']}
     - {role: middleware/php,tags: ['php']}
     - {role: middleware/ruby,tags: ['ruby']}
