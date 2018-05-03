@@ -1,0 +1,27 @@
+FROM centos:centos6
+
+RUN yum install -y wget tar git unzip
+RUN yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
+RUN rpm -Uvh http://ftp.riken.jp/Linux/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm
+RUN yum -y install libaio
+
+RUN mkdir /root/.ssh
+COPY id_rsa /root/.ssh/id_rsa
+RUN chmod -R 600 /root/.ssh
+RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+
+RUN cd /tmp
+RUN wget http://ftp.jaist.ac.jp/pub/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz
+RUN tar zxvf spark-2.3.0-bin-hadoop2.7.tgz -C /usr/local/lib/
+RUN ln -s /usr/local/lib/spark-2.3.0-bin-hadoop2.7 /usr/local/lib/spark
+RUN touch /etc/profile.d/spark.sh
+RUN echo "export SPARK_HOME=/usr/local/lib/spark" >> /etc/profile.d/spark.sh
+RUN echo "export PATH=$SPARK_HOME/bin:$PATH" >> /etc/profile.d/spark.sh
+RUN source /etc/profile
+
+EXPOSE 8080
+
+COPY myapp.sh /tmp
+RUN  chmod 755 /tmp/myapp.sh
+ENTRYPOINT /tmp/myapp.sh && tail -f /dev/null
