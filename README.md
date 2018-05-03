@@ -1,7 +1,7 @@
 # ansible
 
 1. sudo yum -y install epel-release
-2. sudo yum -y install ansible
+2. sudo yum -y install ansible git  
 3. ssh-keyscan github.com >> ~/.ssh/known_hosts; git clone git@github.com:katsudonik/ansible.git; cd ansible
 
 3. run below
