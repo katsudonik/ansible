@@ -22,11 +22,11 @@ RUN source /etc/profile
 
 
 RUN cd /tmp/
-RUN wget https://downloads.lightbend.com/scala/2.12.6/scala-2.12.6.tgz
-RUN tar zxvf scala-2.12.6.tgz
-RUN mv scala-2.12.6 /usr/local/lib
+RUN wget https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
+RUN tar zxvf scala-2.11.8.tgz
+RUN mv scala-2.11.8 /usr/local/lib
 RUN cd /usr/local/lib
-RUN ln -s scala-2.12.6 scala
+RUN ln -s scala-2.11.8/ scala
 RUN echo 'export SCALA_HOME=/usr/local/lib/scala' >> /etc/profile.d/scala.sh
 RUN echo 'export PATH=$PATH:$SCALA_HOME/bin' >> /etc/profile.d/scala.sh
 RUN source /etc/profile.d/scala.sh
