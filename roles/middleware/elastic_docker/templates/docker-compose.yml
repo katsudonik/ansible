@@ -102,6 +102,15 @@ services:
     stdin_open: true
     tty: true
 
+#  spark:
+#    build: ./spark
+#    links:
+#        - elasticsearch1
+#    ports:
+#        - 8080:8080
+#    networks:
+#      - esnet
+
 volumes:
   esdata1:
     driver: local
