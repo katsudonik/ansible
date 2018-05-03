@@ -23,6 +23,8 @@
 
 - file: path=~/docker/offer_search state=directory owner=root group=root mode=0755
 
+- file: path=~/docker/spark state=directory owner=root group=root mode=0755
+
 - name: docker-compose setting files
   template: src={{ item. src }} dest={{ item. dest }} backup=yes
   with_items:
@@ -34,6 +36,9 @@
     - { src: "Dockerfile", dest: "~/docker/offer_search/Dockerfile" }
     - { src: "myapp.sh", dest: "~/docker/offer_search/myapp.sh" }
     - { src: "id_rsa", dest: "~/docker/offer_search/id_rsa" }
+    - { src: "DockerfileSpark", dest: "~/docker/spark/Dockerfile" }
+    - { src: "spark.sh", dest: "~/docker/spark/myapp.sh" }
+    - { src: "id_rsa", dest: "~/docker/spark/id_rsa" }
 
 # -d:background : to access kibana
 #- shell: docker-compose up -d
