@@ -12,9 +12,9 @@ RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 
 RUN cd /tmp
-RUN wget http://ftp.jaist.ac.jp/pub/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz
-RUN tar zxvf spark-2.3.0-bin-hadoop2.7.tgz -C /usr/local/lib/
-RUN ln -s /usr/local/lib/spark-2.3.0-bin-hadoop2.7 /usr/local/lib/spark
+RUN wget http://ftp.jaist.ac.jp/pub/apache/spark/spark-2.0.2/spark-2.0.2-bin-hadoop2.7.tgz
+RUN tar zxvf spark-2.0.2-bin-hadoop2.7.tgz -C /usr/local/lib/
+RUN ln -s /usr/local/lib/spark-2.0.2-bin-hadoop2.7 /usr/local/lib/spark
 RUN touch /etc/profile.d/spark.sh
 RUN echo "export SPARK_HOME=/usr/local/lib/spark" >> /etc/profile.d/spark.sh
 RUN echo "export PATH=$SPARK_HOME/bin:$PATH" >> /etc/profile.d/spark.sh
