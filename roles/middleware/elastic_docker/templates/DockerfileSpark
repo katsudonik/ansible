@@ -17,7 +17,7 @@ RUN tar zxvf spark-2.0.2-bin-hadoop2.7.tgz -C /usr/local/lib/
 RUN ln -s /usr/local/lib/spark-2.0.2-bin-hadoop2.7 /usr/local/lib/spark
 RUN touch /etc/profile.d/spark.sh
 RUN echo "export SPARK_HOME=/usr/local/lib/spark" >> /etc/profile.d/spark.sh
-RUN echo "export PATH=$SPARK_HOME/bin:$PATH" >> /etc/profile.d/spark.sh
+RUN echo "export PATH=/usr/local/lib/spark/bin:$PATH" >> /etc/profile.d/spark.sh
 RUN source /etc/profile
 
 
@@ -28,7 +28,7 @@ RUN mv scala-2.11.8 /usr/local/lib
 RUN cd /usr/local/lib
 RUN ln -s scala-2.11.8/ scala
 RUN echo 'export SCALA_HOME=/usr/local/lib/scala' >> /etc/profile.d/scala.sh
-RUN echo 'export PATH=$PATH:$SCALA_HOME/bin' >> /etc/profile.d/scala.sh
+RUN echo 'export PATH=$PATH:/usr/local/lib/scala/bin' >> /etc/profile.d/scala.sh
 RUN source /etc/profile.d/scala.sh
 
 RUN curl https://bintray.com/sbt/rpm/rpm |  tee /etc/yum.repos.d/bintray-sbt-rpm.repo
