@@ -26,7 +26,7 @@ RUN wget https://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
 RUN tar zxvf scala-2.11.8.tgz
 RUN mv scala-2.11.8 /usr/local/lib
 RUN cd /usr/local/lib
-RUN ln -s scala-2.11.8/ scala
+RUN ln -s /usr/local/lib/scala-2.11.8/ /usr/local/lib/scala
 RUN echo 'export SCALA_HOME=/usr/local/lib/scala' >> /etc/profile.d/scala.sh
 RUN echo 'export PATH=$PATH:/usr/local/lib/scala/bin' >> /etc/profile.d/scala.sh
 RUN source /etc/profile.d/scala.sh
