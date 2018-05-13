@@ -16,6 +16,8 @@ php_yum_install_packages:
   - 'memcached'
   - 'php-pecl-memcache'
   - 'php-ldap'
+  - 'php-common'
+  - 'httpd'
 
 # php.iniの置換
 php_ini_regexp_replace:
