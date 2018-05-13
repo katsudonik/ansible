@@ -68,13 +68,11 @@
     - ruby
 
 - name: install ruby with rbenv
-  when: not fm.stat.exists
   shell: bash -lc "CONFIGURE_OPTS="--disable-install-rdoc" rbenv install {{ ruby_version }}"
   tags:
     - ruby
 
 - name: "set ruby {{ ruby_version }} for system"
-  when: not fm.stat.exists
   shell: bash -lc "rbenv global {{ ruby_version }} && rbenv rehash"
   tags:
     - ruby
