@@ -76,3 +76,9 @@
   shell: bash -lc "rbenv global {{ ruby_version }} && rbenv rehash"
   tags:
     - ruby
+
+- name: "install bundler"
+  shell: bash -lc "rbenv exec gem install bundler"
+  tags:
+    - ruby
+
