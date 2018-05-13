@@ -9,9 +9,11 @@
     - { name: libffi-devel,   state: present }
     - { name: zlib-devel,     state: present }
     - { name: openssl-devel,  state: present }
+    - { name: gcc,            state: present }
     - { name: readline-devel, state: present }
     - { name: bzip2,          state: present }
-    - { name: ruby,           state: latest }
+    - { name: ruby,           state: present }
+    
   tags:
     - ruby
 
