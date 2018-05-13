@@ -11,6 +11,7 @@
   yum: name={{ item.name }} state={{ item.state }}
   with_items:
     - { name:  mysql-community-server,  state: present }
+    - { name:  mysql-devel,  state: present }
 
 - name: start mysqld
   service: name=mysqld state=started
