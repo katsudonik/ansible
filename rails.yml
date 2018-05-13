@@ -1,0 +1,13 @@
+---
+- name: install middleware
+  hosts: localhost
+  connection: local
+  become: yes
+  vars_files:
+    - vars/stock_crawler.{{ _env }}.yml
+  roles:
+    - {role: middleware/common,tags: ['common']}
+    - {role: middleware/mysql,tags: ['mysql']}
+    - {role: middleware/ruby,tags: ['ruby']}
+
+# - name: gem install rails
