@@ -27,8 +27,13 @@
   notify:
     - restart httpd
 
+- name: check exists apc.ini
+  stat: path=/etc/php.d/apc.ini  
+  register: fm
+
 # apc.iniの置換
 - name: apc.ini replace
+  when: fm.stat.exists
   lineinfile: >-
     dest='/etc/php.d/apc.ini'
     state=present
