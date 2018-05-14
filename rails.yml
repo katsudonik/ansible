@@ -12,4 +12,4 @@
     - {role: middleware/mysql,tags: ['mysql']}
     - {role: middleware/ruby,tags: ['ruby']}
 
-# - name: gem install rails
+- shell: bash -lc "gem install rails"
