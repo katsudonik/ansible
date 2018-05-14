@@ -25,6 +25,3 @@
            version={{ git.version }}
            accept_hostkey=yes
            force=yes
-
-    - name: permission
-      file: path=/var/www/html/cakephp state=directory owner=apache group=apache mode=0777
