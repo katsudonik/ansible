@@ -8,6 +8,8 @@
 * ansible-playbook -i localhost middleware.yml -k -v
 * ansible-playbook -i localhost application.yml -k -v
 
+
+
 ### start elasticsearch: minimal:2060255232 Byte(2G)
 /etc/init.d/elasticsearch start
 
@@ -55,4 +57,9 @@ c.NotebookApp.open_browser = False
 run
 ```
 jupyter notebook --ip=* --no-browser
+```
+
+# run from specify
+```
+ansible-playbook --start-at="[name]"
 ```
