@@ -73,6 +73,7 @@
 - shell: bash -lc "source ~/.bash_profile"
 
 - name: install ruby with rbenv
+  when: not fm.stat.exists
   shell: bash -lc "CONFIGURE_OPTS="--disable-install-rdoc" rbenv install {{ ruby_version }}"
   tags:
     - ruby
