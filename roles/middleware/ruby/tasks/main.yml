@@ -67,6 +67,11 @@
   tags:
     - ruby
 
+
+- shell: echo 'export PATH="/usr/local/rbenv/bin:$PATH"' >> ~/.bash_profile
+- shell: echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+- shell: bash -lc "ource ~/.bash_profile"
+
 - name: install ruby with rbenv
   shell: bash -lc "CONFIGURE_OPTS="--disable-install-rdoc" rbenv install {{ ruby_version }}"
   tags:
