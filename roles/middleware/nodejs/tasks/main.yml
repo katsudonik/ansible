@@ -1,4 +1,15 @@
 - shell: curl -L git.io/nodebrew | perl - setup
+  tags:
+    - nodejs
+
 - shell: echo "export PATH=$HOME/.nodebrew/current/bin:$PATH" >> ~/.bash_profile
+  tags:
+    - nodejs
+
 - shell: bash -lc "nodebrew install-binary 8.11.1"
+  tags:
+    - nodejs
+
 - shell: bash -lc "nodebrew use v8.11.1"
+  tags:
+    - nodejs
