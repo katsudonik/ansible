@@ -1,15 +1,10 @@
-- shell: curl -L git.io/nodebrew | perl - setup
+- name: setup nodejs6.x
+  become: yes
+  shell: curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash -
   tags:
     - nodejs
 
-- shell: echo "export PATH=$HOME/.nodebrew/current/bin:$PATH" >> ~/.bash_profile
-  tags:
-    - nodejs
-
-- shell: bash -lc "nodebrew install-binary 8.11.1"
-  tags:
-    - nodejs
-
-- shell: bash -lc "nodebrew use v8.11.1"
+- yum: name=nodejs state=latest
+  become: yes
   tags:
     - nodejs
