@@ -4,7 +4,7 @@
 
 # php関連のパッケージインストール
 - name: yum install php packages
-  yum: name={{item}} state=present
+  yum: name={{item}} state=present enablerepo=remi,remi-php56
   with_items: "{{ php_yum_install_packages }}"
 
 # pear channel-update
