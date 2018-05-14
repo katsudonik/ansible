@@ -7,6 +7,8 @@
     - vars/stock_crawler.{{ _env }}.yml
   roles:
     - {role: middleware/common,tags: ['common']}
+    - {role: middleware/nginx,tags: ['nginx']}
+    - {role: middleware/nodejs,tags: ['nodejs']}
     - {role: middleware/mysql,tags: ['mysql']}
     - {role: middleware/ruby,tags: ['ruby']}
 
