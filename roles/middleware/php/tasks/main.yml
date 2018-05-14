@@ -1,3 +1,7 @@
+- shell: curl -O http://rpms.famillecollet.com/enterprise/remi.repo
+  args:
+    chdir: /etc/yum.repos.d
+
 # php関連のパッケージインストール
 - name: yum install php packages
   yum: name={{item}} state=present
