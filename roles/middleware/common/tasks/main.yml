@@ -19,7 +19,7 @@
     - common
 
 - name: repair date
-  shell: ntpdate -v ntp.nict.jp
+  shell: ntpdate -v ntp.nict.jp & timedatectl set-timezone Asia/Tokyo
 
 - name: install expect
   yum: >
