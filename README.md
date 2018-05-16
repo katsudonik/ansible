@@ -7,8 +7,10 @@
 3. run below
 * ansible-playbook -i localhost middleware.yml -k -v
 * ansible-playbook -i localhost application.yml -k -v
-
-
+* ansible-playbook -i localhost cakephp.yml -k -v
+  http://cakephp:8080 (guest: 80, host:8080)
+* ansible-playbook -i localhost rails.yml -k -v
+  http://localhost:9300 (guest: 3000, host:9300)
 
 ### start elasticsearch: minimal:2060255232 Byte(2G)
 /etc/init.d/elasticsearch start
