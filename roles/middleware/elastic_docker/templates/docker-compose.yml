@@ -91,6 +91,19 @@ services:
 #      - "elasticsearch1"
 #    command: /usr/share/logstash/bin/logstash-plugin install x-pack
 
+#  packetbeat:
+#    image: docker.elastic.co/beats/packetbeat:5.2.1
+#    cap_add: ['NET_RAW', 'NET_ADMIN']
+#    links:
+#        - elasticsearch1
+#    networks:
+#      - esnet
+#    environment:
+#      - ELASTICSEARCH_URL=http://elasticsearch1:9200
+#      - "XPACK_SECURITY_ENABLED=false"
+#    depends_on:
+#      - "elasticsearch1"
+
   offer_search:
     build: ./offer_search
     links:
