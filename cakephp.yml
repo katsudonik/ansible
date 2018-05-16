@@ -25,3 +25,5 @@
            version={{ git.version }}
            accept_hostkey=yes
            force=yes
+
+- shell: sudo chmod -R 777 "{{ git.dir }}"
