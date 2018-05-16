@@ -26,4 +26,4 @@
            accept_hostkey=yes
            force=yes
 
-- shell: sudo chmod -R 777 "{{ git.dir }}"
+    - shell: sudo chmod -R 777 "{{ git.dir }}"
