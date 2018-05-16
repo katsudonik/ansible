@@ -14,8 +14,12 @@
     - { name: tig,          state: present }
     - { name: wget,         state: present }
     - { name: net-tools,    state: present }
+    - { name: ntpdate,    state: present }
   tags:
     - common
+
+- name: repair date
+  shell: ntpdate -v ntp.nict.jp
 
 - name: install expect
   yum: >
