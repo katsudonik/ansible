@@ -39,3 +39,6 @@
 
 # install xpack
 # https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html
+
+- name: install mysql-connector
+  shell: rpm -ivh https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.11-1.el7.noarch.rpm
