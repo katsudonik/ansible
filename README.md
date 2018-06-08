@@ -66,3 +66,6 @@ jupyter notebook --ip=* --no-browser
 ```
 ansible-playbook --start-at="[name]"
 ```
+
+# upload file to google drive:
+https://qiita.com/aviscaerulea/items/53123ce5b79c80e31a71
