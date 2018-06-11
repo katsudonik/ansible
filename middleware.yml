@@ -13,6 +13,7 @@
     - {role: middleware/ruby,tags: ['ruby']}
     - {role: middleware/java,tags: ['java']}
     - {role: middleware/c,tags: ['c']}
+    - {role: middleware/nodejs,tags: ['nodejs']}
     - {role: middleware/casperjs,tags: ['casperjs']}
     - {role: middleware/oracle, tags: ['oracle']}
     - {role: middleware/elastic,tags: ['elastic']}
