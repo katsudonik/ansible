@@ -61,5 +61,6 @@
     - 'tensorflow'
     - 'keras'
     - 'selenium'
+    - 'folium'
   tags:
     - crawler/register
