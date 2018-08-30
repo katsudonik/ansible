@@ -55,6 +55,10 @@
 - shell: "bash -lc 'pip install {{ item }}'"
   become_user: "{{ username }}"
   with_items:
+    - 'numpy'
+    - 'sqlalchemy'
+    - 'pillow'
+    - 'PyMySQL'
     - 'cx_Oracle'
     - 'redis'
     - 'yml'
