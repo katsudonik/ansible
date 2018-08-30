@@ -5,7 +5,7 @@
 3. ssh-keyscan github.com >> ~/.ssh/known_hosts; git clone git@github.com:katsudonik/ansible.git; cd ansible
 
 3. run below
-* ansible-playbook -i localhost middleware.yml -k -v
+* ansible-playbook -i localhost middleware.yml -k -v -t "common,mysql,python"
 * ansible-playbook -i localhost application.yml -k -v
 * ansible-playbook -i localhost cakephp.yml -k -v  
   http://cakephp:8080 (guest: 80, host:8080)  
