@@ -56,3 +56,6 @@
   when: not fm_phantom.stat.exists
   tags:
     - casperjs
+ 
+- name: yum install fontconfig-devel
+  yum: name=fontconfig-devel state=present
