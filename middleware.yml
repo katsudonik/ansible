@@ -8,6 +8,7 @@
   roles:
     - {role: middleware/common,tags: ['common']}
     - {role: middleware/httpd,tags: ['httpd']}
+    - {role: middleware/nginx,tags: ['nginx']}
     - {role: middleware/mysql,tags: ['mysql']}
     - {role: middleware/python, tags: ['python']}
     - {role: middleware/php,tags: ['php']}
