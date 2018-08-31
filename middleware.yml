@@ -10,6 +10,7 @@
     - {role: middleware/httpd,tags: ['httpd']}
     - {role: middleware/nginx,tags: ['nginx']}
     - {role: middleware/mysql,tags: ['mysql']}
+    - {role: middleware/redis,tags: ['redis']}
     - {role: middleware/python, tags: ['python']}
     - {role: middleware/php,tags: ['php']}
     - {role: middleware/ruby,tags: ['ruby']}

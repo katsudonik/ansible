@@ -1,5 +1,5 @@
 ---
-username: vcp
+username: root
 anaconda_version: anaconda3-4.3.0
 project_name: stock_crawler
 git_version: master
