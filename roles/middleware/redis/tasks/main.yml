@@ -1,0 +1,8 @@
+- name: yum install redis packages
+  yum: name=redis state=present
+
+- name: start redis
+  service: name=redis state=started
+
+- name: systemctl enable redis.service
+  shell: systemctl enable redis.service
