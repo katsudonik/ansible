@@ -68,6 +68,6 @@
     - 'folium'
     - 'uwsgi'
     - 'django'
-    - 'debug_toolbar'
+    - 'django-debug-toolbar'
   tags:
     - crawler/register
