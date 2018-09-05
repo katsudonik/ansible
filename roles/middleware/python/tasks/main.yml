@@ -66,5 +66,6 @@
     - 'keras'
     - 'selenium'
     - 'folium'
+    - 'django'
   tags:
     - crawler/register
