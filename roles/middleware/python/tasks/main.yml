@@ -66,6 +66,7 @@
     - 'keras'
     - 'selenium'
     - 'folium'
+    - 'uwsgi'
     - 'django'
   tags:
     - crawler/register
