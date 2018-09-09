@@ -69,5 +69,6 @@
     - 'uwsgi'
     - 'django'
     - 'django-debug-toolbar'
+    - 'jupyter'
   tags:
     - crawler/register
