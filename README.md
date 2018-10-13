@@ -47,7 +47,6 @@ end
 ```
 
 ```
-pip install jupyter
 jupyter notebook --generate-config
 ```
 
