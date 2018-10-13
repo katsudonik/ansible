@@ -13,6 +13,8 @@
 * ansible-playbook -i localhost rails.yml -k -v  
   http://localhost:9300 (guest: 3000, host:9300)
 
+## elastic search
+
 ### start elasticsearch: minimal:2060255232 Byte(2G)
 /etc/init.d/elasticsearch start
 
