@@ -66,7 +66,8 @@ jupyter notebook --ip=* --no-browser
 ## python2
 ```
 source activate pyt2
-jupyter notebook --ip=* --no-browser --allow-root 
+pip install numpy tensorflow keras
+jupyter notebook --ip=* --no-browser --allow-root
 ```
 
 # run ansible from specify
