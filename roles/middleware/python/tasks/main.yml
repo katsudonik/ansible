@@ -72,3 +72,12 @@
     - 'jupyter'
   tags:
     - crawler/register
+
+- name: install python2
+  become_user: "{{ username }}"
+  shell: |
+    source ~/.bash_profile
+    conda create -n pyt2 python=2.7 anaconda
+  tags:
+    - crawler/register
+
