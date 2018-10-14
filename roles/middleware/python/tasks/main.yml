@@ -56,9 +56,9 @@
   become_user: "{{ username }}"
   with_items:
     - 'numpy'
-    - 'sqlalchemy' # for not use PyMySQL
+    - 'sqlalchemy'
     - 'pillow'
-    - 'PyMySQL' # only for django
+    - 'PyMySQL'
     - 'cx_Oracle'
     - 'redis'
     - 'yml'
@@ -66,7 +66,7 @@
     - 'keras'
     - 'selenium'
     - 'folium'
-    - 'uwsgi' # for web python (django)
+    - 'uwsgi'
     - 'django'
     - 'django-debug-toolbar'
     - 'jupyter'
