@@ -1,2 +1,15 @@
-tensorflow：数値計算library
-keras:tensorflowの簡略版
+- 'numpy': math library (use compiled c)
+- 'sqlalchemy': for not use
+- 'pillow'
+- 'PyMySQL': usable for only django - mysql connection
+- 'cx_Oracle': oracle
+- 'redis'
+- 'yml'
+- 'tensorflow': ML
+- 'keras': easy tensorflow
+- 'selenium'
+- 'folium'
+- 'uwsgi': for web python (django) application server
+- 'django'
+- 'django-debug-toolbar'
+- 'jupyter'
