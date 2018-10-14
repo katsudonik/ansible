@@ -63,7 +63,12 @@ run
 jupyter notebook --ip=* --no-browser
 ```
 
-# run from specify
+# activate python2
+```
+source activate pyt2
+```
+
+# run ansible from specify
 ```
 ansible-playbook --start-at="[name]"
 ```
