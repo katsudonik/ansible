@@ -63,9 +63,10 @@ run
 jupyter notebook --ip=* --no-browser
 ```
 
-# activate python2
+## python2
 ```
 source activate pyt2
+jupyter notebook --ip=* --no-browser --allow-root 
 ```
 
 # run ansible from specify
