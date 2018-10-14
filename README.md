@@ -60,7 +60,7 @@ c.NotebookApp.open_browser = False
 
 run
 ```
-jupyter notebook --ip=* --no-browser --allow-root
+jupyter notebook --ip=* --no-browser
 ```
 
 # run from specify
