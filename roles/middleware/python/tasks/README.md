@@ -1,5 +1,5 @@
 - numpy: math library (use compiled c)
-- sqlalchemy: for not use
+- sqlalchemy: for rdb (not use PyMySQL)
 - pillow
 - PyMySQL: usable for only django - mysql connection
 - cx_Oracle: oracle
