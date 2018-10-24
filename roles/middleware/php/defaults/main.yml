@@ -19,6 +19,7 @@ php_yum_install_packages:
   - 'php-common'
   - 'httpd'
   - 'php-phpunit-PHPUnit'
+  - 'php-mcrypt'
 
 # php.iniの置換
 php_ini_regexp_replace:
