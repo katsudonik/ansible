@@ -21,6 +21,6 @@
   tasks:
     - shell: bash -lc "gem install rails"
     - shell: echo "export RAILS_DATABASE_USER="rails_user"" >>  ~/.bash_profile
-    - shell: echo "export RAILS_DATABASE_PASSWORD="tmL3WjsgV8Kb$"" >>  ~/.bash_profile
+    - shell: echo "export RAILS_DATABASE_PASSWORD="g4s3WjdrgsrB8Kb$"" >>  ~/.bash_profile
     - shell: echo "export RAILS_ENV="development"" >>  ~/.bash_profile
     - shell: bash -lc "source ~/.bash_profile"
