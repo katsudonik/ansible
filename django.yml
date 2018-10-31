@@ -11,3 +11,25 @@
     - {role: middleware/mysql,tags: ['mysql']}
     - {role: middleware/redis,tags: ['redis']}
     - {role: middleware/python, tags: ['python']}
+
+- name: daemonize uwsgi application
+  hosts: stock_crawler
+  connection: local
+  vars_files:
+    - vars/stock_crawler.dev.yml
+  tasks:
+    - name: set nginx conf
+      template: src=templates/django/nginx.conf dest=/etc/nginx/conf.d/django.conf
+    - name: set nginx conf
+      template: src=templates/django/uwsgi.service dest=/etc/systemd/system/uwsgi.service
+    - name: mk uwsgi log dir
+      file:
+        path: /var/log/uwsgi
+        mode: 0777
+        state: directory
+    - name: restart uwsgi
+      systemd:
+        name: uwsgi
+        state: restarted
+        daemon_reload: yes
+        enabled: yes

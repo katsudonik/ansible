@@ -1,0 +1,15 @@
+[Unit]
+Description=uWSGI
+After=syslog.target
+
+[Service]
+ExecStart=/bin/bash -c 'source /root/.bash_profile; /root/.pyenv/versions/anaconda3-4.3.0/bin/uwsgi --ini /usr/local/src/your_application/config/settings/uwsgi.ini --pythonpath /root/.pyenv/versions/anaconda3-4.3.0/bin/python --uid root --gid root --env DJANGO_SETTINGS_MODULE=config.settings.develop'
+RuntimeDirectory=uwsgi
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
