@@ -1,0 +1,13 @@
+---
+- name: construct
+  hosts: stock_crawler
+  connection: local
+  become: yes
+  vars_files:
+    - vars/stock_crawler.dev.yml
+  roles:
+    - {role: middleware/common,tags: ['common']}
+    - {role: middleware/nginx,tags: ['nginx']}
+    - {role: middleware/mysql,tags: ['mysql']}
+    - {role: middleware/redis,tags: ['redis']}
+    - {role: middleware/python, tags: ['python']}
