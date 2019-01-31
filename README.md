@@ -52,10 +52,12 @@ end
 jupyter notebook --generate-config
 ```
 
+https://qiita.com/syo_cream/items/05553b41277523a131fd  
 edit
 ```
-c.NotebookApp.ip = '*'
+c.NotebookApp.ip = '0.0.0.0'
 c.NotebookApp.open_browser = False
+c.NotebookApp.password = 'sha1:******'
 ```
 
 run
