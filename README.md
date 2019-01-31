@@ -58,6 +58,7 @@ edit
 c.NotebookApp.ip = '0.0.0.0'
 c.NotebookApp.open_browser = False
 c.NotebookApp.password = 'sha1:******'
+c.NotebookApp.port = 8888
 ```
 
 run
