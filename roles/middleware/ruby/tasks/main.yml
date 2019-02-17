@@ -69,7 +69,7 @@
 
 
 - shell: bash -lc "echo 'export PATH=\"/usr/local/rbenv/bin:$PATH\"' >> ~/.bash_profile"
-- shell: bash -lc "echo 'eval \"$(rbenv init -)\"' >> ~/.bash_profile"
+- shell: echo 'eval \"$(rbenv init -)\"' >> ~/.bash_profile
 - shell: bash -lc "source ~/.bash_profile"
 
 - name: install ruby with rbenv
