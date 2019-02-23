@@ -71,7 +71,7 @@
 - shell: echo 'eval "$(rbenv init -)"' >> /home/vcp/.bash_profile
 
 - name: install2 ruby-build
-  shell: {{ rbenv_root }}/plugins/ruby-build/install.sh
+  shell: sh {{ rbenv_root }}/plugins/ruby-build/install.sh
   when: not fm.stat.exists
   tags:
     - ruby
