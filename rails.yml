@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
   become: yes
+  become_user: "vcp"
   vars_files:
     - vars/stock_crawler.{{ _env }}.yml
   roles:
