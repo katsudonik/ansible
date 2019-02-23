@@ -68,7 +68,7 @@
     - ruby
 
 - name: set ruby
-  shell: echo 'export PATH=\"/usr/local/rbenv/bin:$PATH\"' >> /home/vcp/.bash_profile
+  shell: echo 'export PATH="/usr/local/rbenv/bin:$PATH"' >> /home/vcp/.bash_profile
 
 - name: set rbenv env file2
   when: not fm.stat.exists
