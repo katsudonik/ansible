@@ -33,13 +33,6 @@
   tags:
     - ruby
 
-- name: install2 ruby-build
-  shell: sudo {{ rbenv_root }}/plugins/ruby-build/install.sh
-  when: not fm.stat.exists
-  tags:
-    - ruby
-
-
 - name: create rbenv group
   group: name=rbenv state=present
   when: not fm.stat.exists
@@ -76,16 +69,21 @@
     
 - shell: bash -lc "echo 'export PATH=\"/usr/local/rbenv/bin:$PATH\"' >> /home/vcp/.bash_profile
 - shell: echo 'eval "$(rbenv init -)"' >> /home/vcp/.bash_profile
-- shell: bash -lc "source /home/vcp/.bash_profile
 
+- name: install2 ruby-build
+  shell: {{ rbenv_root }}/plugins/ruby-build/install.sh
+  when: not fm.stat.exists
+  tags:
+    - ruby
+    
 - name: install ruby with rbenv
   when: not fm.stat.exists
-  shell: bash -lc "CONFIGURE_OPTS="--disable-install-rdoc" rbenv install {{ ruby_version }}"
+  shell: bash -lc "source /home/vcp/.bash_profile; CONFIGURE_OPTS="--disable-install-rdoc" rbenv install {{ ruby_version }}"
   tags:
     - ruby
 
 - name: "set ruby {{ ruby_version }} for system"
-  shell: bash -lc "rbenv global {{ ruby_version }} && rbenv rehash"
+  shell: bash -lc "source /home/vcp/.bash_profile; rbenv global {{ ruby_version }} && rbenv rehash"
   tags:
     - ruby
 
