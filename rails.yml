@@ -3,7 +3,6 @@
   hosts: localhost
   connection: local
   become: yes
-  become_user: "root"
   vars_files:
     - vars/stock_crawler.{{ _env }}.yml
   roles:
