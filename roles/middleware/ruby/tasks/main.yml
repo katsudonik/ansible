@@ -73,11 +73,10 @@
   copy: src=rbenv.sh dest=/etc/profile.d mode=0775
   tags:
     - ruby
-
-
-- shell: bash -lc "echo 'export PATH=\"/usr/local/rbenv/bin:$PATH\"' >> ~/.bash_profile"
-- shell: echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-- shell: bash -lc "source ~/.bash_profile"
+    
+- shell: bash -lc "echo 'export PATH=\"/usr/local/rbenv/bin:$PATH\"' >> /home/vcp/.bash_profile
+- shell: echo 'eval "$(rbenv init -)"' >>/home/vcp/.bash_profile
+- shell: bash -lc "source /home/vcp/.bash_profile
 
 - name: install ruby with rbenv
   when: not fm.stat.exists
