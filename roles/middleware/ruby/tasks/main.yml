@@ -33,6 +33,13 @@
   tags:
     - ruby
 
+- name: install2 ruby-build
+  shell: sudo {{ rbenv_root }}/plugins/ruby-build/install.sh
+  when: not fm.stat.exists
+  tags:
+    - ruby
+
+
 - name: create rbenv group
   group: name=rbenv state=present
   when: not fm.stat.exists
