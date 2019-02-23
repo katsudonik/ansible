@@ -20,8 +20,8 @@
   vars_files:
     - vars/stock_crawler.{{ _env }}.yml
   tasks:
-    - shell: bash -lc "gem install rails"
-    - shell: echo "export RAILS_DATABASE_USER="rails_user"" >>  ~/.bash_profile
-    - shell: echo "export RAILS_DATABASE_PASSWORD="g4s3WjdrgsrB8Kb$"" >>  ~/.bash_profile
-    - shell: echo "export RAILS_ENV="development"" >>  ~/.bash_profile
-    - shell: bash -lc "source ~/.bash_profile"
+    - shell: bash -lc "source /home/vcp/.bash_profile; gem install rails"
+    - shell: echo "export RAILS_DATABASE_USER="rails_user"" >>  /home/vcp/.bash_profile 
+    - shell: echo "export RAILS_DATABASE_PASSWORD="g4s3WjdrgsrB8Kb$"" >>  /home/vcp/.bash_profile 
+    - shell: echo "export RAILS_ENV="development"" >>  /home/vcp/.bash_profile 
+    - shell: bash -lc "source /home/vcp/.bash_profile "
