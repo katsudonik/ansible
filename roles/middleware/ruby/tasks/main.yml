@@ -67,8 +67,17 @@
   tags:
     - ruby
 
-- shell: bash -lc "echo 'export PATH=\"/usr/local/rbenv/bin:$PATH\"' >> /home/vcp/.bash_profile
-- shell: echo 'eval "$(rbenv init -)"' >> /home/vcp/.bash_profile
+- name: set rbenv env file
+  when: not fm.stat.exists
+  shell: bash -lc "echo 'export PATH=\"/usr/local/rbenv/bin:$PATH\"' >> /home/vcp/.bash_profile"
+  tags:
+    - ruby
+    
+- name: set rbenv env file2
+  when: not fm.stat.exists
+  shell: echo 'eval "$(rbenv init -)"' >> /home/vcp/.bash_profile"
+  tags:
+    - ruby
 
 - name: install2 ruby-build
   shell: sh {{ rbenv_root }}/plugins/ruby-build/install.sh
