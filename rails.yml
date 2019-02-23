@@ -12,6 +12,7 @@
     - {role: middleware/mysql,tags: ['mysql']}
     - {role: middleware/ruby,tags: ['ruby']}
 
+- name: install ruby2
   hosts: localhost
   connection: local
   become: yes
