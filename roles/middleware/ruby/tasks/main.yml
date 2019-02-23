@@ -66,3 +66,23 @@
   copy: src=rbenv.sh dest=/etc/profile.d mode=0775
   tags:
     - ruby
+
+- name: set ruby
+  shell: echo 'export PATH=\"/usr/local/rbenv/bin:$PATH\"' >> /home/vcp/.bash_profile
+
+- name: set rbenv env file2
+  when: not fm.stat.exists
+  shell: echo 'eval "$(rbenv init -)"' >> /home/vcp/.bash_profile
+
+- name: install2 ruby-build
+  shell: sh {{ rbenv_root }}/plugins/ruby-build/install.sh
+
+- name: install ruby with rbenv
+  when: not fm.stat.exists
+  shell: bash -lc "source /home/vcp/.bash_profile; CONFIGURE_OPTS="--disable-install-rdoc" rbenv install {{ ruby_version }}"
+
+- name: "set ruby {{ ruby_version }} for system"
+  shell: bash -lc "source /home/vcp/.bash_profile; rbenv global {{ ruby_version }} && rbenv rehash"
+
+- name: "install bundler"
+  shell: bash -lc "source /home/vcp/.bash_profile; rbenv exec gem install bundler"
