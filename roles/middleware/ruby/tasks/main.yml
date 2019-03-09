@@ -17,38 +17,31 @@
   tags:
     - ruby
 
-- name: check installed rbenv
-  stat: path={{ rbenv_root }}   
-  register: fm
-
 - name: install rbenv
+  become_user: "{{ username }}"
   git: repo=https://github.com/sstephenson/rbenv.git dest={{ rbenv_root }}
-  when: not fm.stat.exists
   tags:
     - ruby
 
 - name: install ruby-build
+  become_user: "{{ username }}"
   git: repo=https://github.com/sstephenson/ruby-build.git dest={{ rbenv_root }}/plugins/ruby-build
-  when: not fm.stat.exists
   tags:
     - ruby
 
 - name: create rbenv group
   group: name=rbenv state=present
-  when: not fm.stat.exists
   tags:
     - ruby
 
 - name: add rbenv user to rbenv group
   user: name={{ rbenv_user }} append=yes groups=rbenv
-  when: not fm.stat.exists
   register: add_group
   tags:
     - ruby
 
 - name: create dirs
   file: path={{ rbenv_root }}/{{ item.name }} state=directory
-  when: not fm.stat.exists
   with_items:
     - { name: shims }
     - { name: versions }
@@ -62,27 +55,42 @@
     - ruby
 
 - name: set rbenv env file
-  when: not fm.stat.exists
   copy: src=rbenv.sh dest=/etc/profile.d mode=0775
   tags:
     - ruby
 
-- name: set ruby
-  shell: echo 'export PATH="/usr/local/rbenv/bin:$PATH"' >> /home/vcp/.bash_profile
+- name: setting rbenv in PATH
+  become_user: "{{ username }}"
+  lineinfile:
+    dest=~/.bash_profile
+    state=present
+    line={{ item }}
+  with_items:
+    - 'export RBENV_ROOT={{ rbenv_root }}'
+    - 'export PATH=$RBENV_ROOT/bin:$PATH'
+    - 'eval "$(rbenv init -)"'
+  tags:
+    - ruby
 
-- name: set rbenv env file2
-  when: not fm.stat.exists
-  shell: echo 'eval "$(rbenv init -)"' >> /home/vcp/.bash_profile
-
+- name: install ruby-build
+  become_user: "{{ username }}"
+  shell: |
+    source ~/.bash_profile
+    sh {{ rbenv_root }}/plugins/ruby-build/install.sh
+  tags:
+    - ruby
+    
 - name: install2 ruby-build
   shell: sh {{ rbenv_root }}/plugins/ruby-build/install.sh
 
-- name: install ruby with rbenv
-  when: not fm.stat.exists
-  shell: bash -lc "source /home/vcp/.bash_profile; CONFIGURE_OPTS="--disable-install-rdoc" rbenv install {{ ruby_version }}"
-
-- name: "set ruby {{ ruby_version }} for system"
-  shell: bash -lc "source /home/vcp/.bash_profile; rbenv global {{ ruby_version }} && rbenv rehash"
-
-- name: "install bundler"
-  shell: bash -lc "source /home/vcp/.bash_profile; rbenv exec gem install bundler"
+- name: install ruby
+  become_user: "{{ username }}"
+  shell: |
+    source ~/.bash_profile
+    # install ruby
+    rbenv install {{ ruby_version }}
+    rbenv global {{ ruby_version }}
+    rbenv rehash
+    rbenv exec gem install bundler
+  tags:
+    - ruby
