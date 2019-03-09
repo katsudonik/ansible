@@ -92,5 +92,19 @@
     rbenv global {{ ruby_version }}
     rbenv rehash
     rbenv exec gem install bundler
+    gem install rails
+  tags:
+    - ruby
+    
+- name: setting rails
+  become_user: "{{ username }}"
+  lineinfile:
+    dest=~/.bash_profile
+    state=present
+    line={{ item }}
+  with_items:
+    - 'export RAILS_DATABASE_USER="rails_user"'
+    - 'export RAILS_DATABASE_PASSWORD="g4s3WjdrgsrB8Kb$"'
+    - 'export RAILS_ENV="development"'
   tags:
     - ruby
