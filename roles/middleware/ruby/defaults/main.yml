@@ -1,4 +1,4 @@
 ---
 ruby_version: 2.4.0
-rbenv_root: /usr/local/rbenv
+rbenv_root: ~/.pyenv
 rbenv_user: vcp
