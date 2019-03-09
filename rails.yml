@@ -23,7 +23,6 @@
       shell: |
         source ~/.bash_profile
         gem install rails
-  
     - become_user: "{{ username }}"
       lineinfile:
         dest=~/.bash_profile
