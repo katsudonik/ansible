@@ -18,13 +18,13 @@
     - ruby
 
 - name: install rbenv
-  become_user: "{{ username }}"
+  become_user: "{{ rbenv_user }}"
   git: repo=https://github.com/sstephenson/rbenv.git dest={{ rbenv_root }}
   tags:
     - ruby
 
 - name: install ruby-build
-  become_user: "{{ username }}"
+  become_user: "{{ rbenv_user }}"
   git: repo=https://github.com/sstephenson/ruby-build.git dest={{ rbenv_root }}/plugins/ruby-build
   tags:
     - ruby
@@ -60,7 +60,7 @@
     - ruby
 
 - name: setting rbenv in PATH
-  become_user: "{{ username }}"
+  become_user: "{{ rbenv_user }}"
   lineinfile:
     dest=~/.bash_profile
     state=present
@@ -73,7 +73,7 @@
     - ruby
 
 - name: install ruby-build
-  become_user: "{{ username }}"
+  become_user: "{{ rbenv_user }}"
   shell: |
     source ~/.bash_profile
     sh {{ rbenv_root }}/plugins/ruby-build/install.sh
@@ -84,7 +84,7 @@
   shell: sh {{ rbenv_root }}/plugins/ruby-build/install.sh
 
 - name: install ruby
-  become_user: "{{ username }}"
+  become_user: "{{ rbenv_user }}"
   shell: |
     source ~/.bash_profile
     # install ruby
@@ -97,7 +97,7 @@
     - ruby
     
 - name: setting rails
-  become_user: "{{ username }}"
+  become_user: "{{ rbenv_user }}"
   lineinfile:
     dest=~/.bash_profile
     state=present
