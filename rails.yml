@@ -9,15 +9,6 @@
     - {role: middleware/nginx,tags: ['nginx']}
     - {role: middleware/nodejs,tags: ['nodejs']}
     - {role: middleware/mysql,tags: ['mysql']}
-
-- name: install middleware
-  hosts: localhost
-  connection: local
-  become: yes
-  become_user: "vcp"
-  vars_files:
-    - vars/stock_crawler.{{ _env }}.yml
-  roles:
     - {role: middleware/ruby,tags: ['ruby']}
 
 - name: install middleware
@@ -28,8 +19,17 @@
   vars_files:
     - vars/stock_crawler.{{ _env }}.yml
   tasks:
-    - shell: bash -lc "source /home/vcp/.bash_profile; gem install rails"
-    - shell: echo "export RAILS_DATABASE_USER="rails_user"" >>  /home/vcp/.bash_profile 
-    - shell: echo "export RAILS_DATABASE_PASSWORD="g4s3WjdrgsrB8Kb$"" >>  /home/vcp/.bash_profile 
-    - shell: echo "export RAILS_ENV="development"" >>  /home/vcp/.bash_profile 
-    - shell: bash -lc "source /home/vcp/.bash_profile "
+    - become_user: "{{ username }}"
+      shell: |
+        source ~/.bash_profile
+        gem install rails
+  
+    - become_user: "{{ username }}"
+      lineinfile:
+        dest=~/.bash_profile
+        state=present
+        line={{ item }}
+      with_items:
+        - 'export RAILS_DATABASE_USER="rails_user"'
+        - 'export RAILS_DATABASE_PASSWORD="g4s3WjdrgsrB8Kb$"'
+        - 'export RAILS_ENV="development"'
