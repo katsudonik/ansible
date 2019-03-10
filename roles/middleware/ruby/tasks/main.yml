@@ -13,6 +13,7 @@
     - { name: readline-devel, state: present }
     - { name: bzip2,          state: present }
     - { name: ruby,           state: present }
+    - { name: sqlite-devel,           state: present }
     
   tags:
     - ruby
