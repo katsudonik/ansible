@@ -62,7 +62,7 @@
 - name: setting rbenv in PATH
   become_user: "{{ rbenv_user }}"
   lineinfile:
-    dest=~/.bash_profile
+    dest={{ bash_profile_path }}
     state=present
     line={{ item }}
   with_items:
@@ -75,7 +75,7 @@
 - name: install ruby-build
   become_user: "{{ rbenv_user }}"
   shell: |
-    source ~/.bash_profile
+    source {{ bash_profile_path }}
     sh {{ rbenv_root }}/plugins/ruby-build/install.sh
   tags:
     - ruby
@@ -86,7 +86,7 @@
 - name: install ruby
   become_user: "{{ rbenv_user }}"
   shell: |
-    source ~/.bash_profile
+    source {{ bash_profile_path }}
     # install ruby
     rbenv install {{ ruby_version }}
     rbenv global {{ ruby_version }}
@@ -99,7 +99,7 @@
 - name: setting rails
   become_user: "{{ rbenv_user }}"
   lineinfile:
-    dest=~/.bash_profile
+    dest={{ bash_profile_path }}
     state=present
     line={{ item }}
   with_items:
