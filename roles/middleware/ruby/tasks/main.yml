@@ -103,8 +103,8 @@
     state=present
     line={{ item }}
   with_items:
-    - 'export RAILS_DATABASE_USER="rails_user"'
-    - 'export RAILS_DATABASE_PASSWORD="g4s3WjdrgsrB8Kb$"'
+    - 'export RAILS_DATABASE_USER="root"'
+    - 'export RAILS_DATABASE_PASSWORD="admin"'
     - 'export RAILS_ENV="development"'
   tags:
     - ruby
