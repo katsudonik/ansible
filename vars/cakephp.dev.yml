@@ -4,8 +4,8 @@ project_name: cakephp
 git:
   dir: /vagrant_data/{{ project_name }}
   version: 2.x
-  owner: vcp
-  group: vcp
+  owner: my_group 
+  group: my_user
 
 config_dir:
   - 'config'
